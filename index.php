@@ -53,7 +53,7 @@
                                 <div class="card-body p-md-5 mx-md-4">
 
                                     <div class="text-center">
-                                        <img src="" style="width: 185px;" alt="logo">
+                                        <img src="./img/big_bbu_logo.png" style="width: 100px;" alt="logo">
                                         <h4 class="mt-1 mb-5 pb-1">We are The D202 Team</h4>
                                     </div>
 
