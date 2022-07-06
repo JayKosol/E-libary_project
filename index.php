@@ -23,6 +23,14 @@
             border-top-left-radius: .3rem;
             border-bottom-left-radius: .3rem;
         }
+        .btn{
+            width: 100%;
+            border: none;
+        }
+        .btn:hover{
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body>
@@ -66,7 +74,7 @@
                                             </div>
 
                                             <div class="text-center pt-1 mb-5 pb-1">
-                                                <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button">Login</button>
+                                                <button class="btn btn-primary btn-block gradient-custom-2 mb-3" type="button">Login</button>
                                             </div>
                                         </div>
                                     </form>
