@@ -8,9 +8,6 @@
     <?php require_once "./Asset/font.php" ?>
     <title>Login</title>
     <style>
-        body{
-            /* font-family: 'Poppins', sans-serif; */
-        }
         .gradient-custom-2 {
             /* fallback for old browsers */
             background: #fccb90;
@@ -33,8 +30,8 @@
         }
     </style>
 </head>
-<body>
-    <section class="vh-90" style="background-color: #eee;">
+<body class="vh-90" style="background-color: #eee;">
+    <section >
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-10">
