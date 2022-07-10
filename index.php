@@ -22,6 +22,8 @@
         }
         .btn{
             width: 100%;
+            
+            font-size: 16px;
             border: none;
         }
         .btn:hover{
@@ -55,7 +57,7 @@
                                     </div>
 
                                     <!-- @form -->
-                                    <form>
+                                    <form method="POST">
                                         <div class="row">
                                             <p>Please login to your account</p>
 
@@ -71,7 +73,7 @@
                                             </div>
 
                                             <div class="text-center pt-1 mb-5 pb-1">
-                                                <button class="btn btn-primary btn-block gradient-custom-2 mb-3" type="button">Login</button>
+                                                <button class="btn btn-primary btn-block gradient-custom-2 mb-3" type="button">LOGIN</button>
                                             </div>
                                         </div>
                                     </form>
