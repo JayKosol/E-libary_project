@@ -6,41 +6,73 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <?php require_once "./Asset/boostrap.php";
            include_once "./Asset/dbconnection.php";
+           include "./Asset/font.php";
      ?>
      <link rel="stylesheet" href="./Asset/css/style.css">
      <title>Home Page</title>
 </head>
-<body class="skin-base animate">
-      <!-- @navigationbar -->
-      <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-                  <!-- Navbar content -->
-                  <div class="left">
-                        <button class="bg-dark">
-                              <img src="./img/menu.png">
-                        </button>
-                        <a href="" >E-Libary</a>
-                  </div>
-
-                  <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                  </form>
+<body>
+     <div class="sidebar">
+      <div class="logo-content">
+            <div class="logo">
+                  <i class='bx bxl-html5' ></i>
+                  <div class="logo_name">E-Libary</div>
             </div>
-      </nav>
-       <!-- @sidebar -->
-       <div class="sidebar">
-            <div class="sidebar-header">
-                  <nav class="nav-sidebar">
-                        <a href="" class="nav-link active"><i data-feather="package"></i><span>Dashboard</span></a>
-                        <a href="" class="nav-link"><i data-feather="monitor"></i><span>Site Analytics</span></a>
-                        <a href="" class="nav-link"><i data-feather="shopping-bag"></i><span>Sales Monitoring</span></a>
-                        <a href="" class="nav-link"><i data-feather="file-text"></i><span>Documents</span></a>
-                        <a href="" class="nav-link"><i data-feather="calendar"></i><span>Calendar</span></a>
-                        <a href="" class="nav-link"><i data-feather="briefcase"></i><span>Customers</span></a>
-                  </nav>                    
-            </div>
+            <i class='bx bx-menu' id="btn"></i>
       </div>
-      <!-- @endsidebar -->
+      <ul class="nav-list">
+                  <li>
+                        <a href="">
+                              <i class='bx bx-search'></i>
+                              <input type="text" placeholder="Search">
+                        </a>
+                        <!-- <i class='tool' ></i> -->
+                  </li>
+                  <li>
+                        <a href="">
+                              <i class='bx bxs-dashboard' ></i>
+                              Dashboard
+                        </a>
+                        <!-- <i class='tool' ></i> -->
+                  </li>
+                  <li>
+                        <a href="">
+                              <i class='bx bx-category' ></i>
+                              Category
+                        </a>
+                        <!-- <i class='tool' ></i> -->
+                  </li>
+                  <li>
+                        <a href="">
+                              <i class='bx bxs-user-detail' ></i>
+                              Author
+                        </a>
+                        <!-- <i class='tool' ></i> -->
+                  </li>
+                  <li>
+                        <a href="">
+                              <i class='bx bxs-book' ></i>
+                              Book
+                        </a>
+                        <!-- <i class='tool' ></i> -->
+                  </li>
+                  <li>
+                        <a href="">
+                              <i class='bx bxs-key' ></i>
+                              Issue
+                        </a>
+                        <!-- <i class='tool' ></i> -->
+                  </li>
+            </ul>
+
+            <!-- @profile -->
+            <div class="profile-content">
+                  <div class="profile">
+                        <div class="profile-detail">
+
+                        </div>
+                  </div>
+            </div>
+     </div>
 </body>
 </html>
