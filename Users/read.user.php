@@ -107,7 +107,7 @@
                             echo "<th>ID</th>";
                             echo "<th>User Types</th>";
                             echo "<th>Username</th>";
-                            //echo "<th>Password</th>";
+                            echo "<th>Password</th>";
                             echo "<th>Position</th>";
                             echo "<th>Create Date</th>";
                             echo "<th>Description</th>";
@@ -120,7 +120,7 @@
                                 echo "<td>".$u['userId']."</td>";
                                 echo "<td>".$u['userTypes']."</td>";
                                 echo "<td>".$u['username']."</td>";
-                                //echo "<td>".$u['password']."</td>";
+                                echo "<td>".$u['password']."</td>";
                                 echo "<td>".$u['position']."</td>";
                                 echo "<td>".$u['createDate']."</td>";
                                 echo "<td>".$u['description']."</td>";
@@ -130,7 +130,7 @@
                                     // echo nl2br("\t");
                                     // echo "<a href='' class='bi bi-card-text'></a>";
                                     echo nl2br("\t| ");
-                                    echo "<a href='' class='bi bi-file-earmark-medical'></a>";
+                                    echo "<a href='update.user.php?id=".$u['userId']."'' class='bi bi-file-earmark-medical'></a>";
                                 echo "</td>";
                                 
                             echo "</tr>";
