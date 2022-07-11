@@ -1,3 +1,10 @@
+<?php 
+  session_start();
+
+  if (!isset($_SESSION['userId']) && !isset($_SESSION['username'])) { 
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,25 +62,33 @@
                                         <img src="./img/big_bbu_logo.png" style="width: 100px;" alt="logo">
                                         <h4 class="mt-1 mb-5 pb-1">We are The D202 Team</h4>
                                     </div>
-
+                                    <div>
+                                        <?php if (isset($_GET['error'])) { ?>
+                                        <div class="alert alert-danger" role="alert">
+                                        <?=htmlspecialchars($_GET['error'])?>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
                                     <!-- @form -->
-                                    <form method="POST">
+                                    <form action="./Users/login.user.php" method="POST">
                                         <div class="row">
                                             <p>Please login to your account</p>
 
                                             <div class="col-12">
-                                                <label for="email">Username</label>
-                                                <input type="email" id="email" class="form-control mb-4" placeholder="Enter your username or email">
+                                                <label for="username">Username</label>
+                                                <input type="text" name="username" 
+                                                    value="<?php if(isset($_GET['username']))echo(htmlspecialchars($_GET['username'])) ?>"
+                                                    id="email" class="form-control mb-4" placeholder="Enter your username">
                                             </div>
                                             <br>
 
                                             <div class="col-12">
                                                 <label for="password">Password</label>
-                                                <input type="password" id="password" class="form-control mb-4" placeholder="Enter your password">
+                                                <input type="password" name="password" id="password" class="form-control mb-4" placeholder="Enter your password">
                                             </div>
 
                                             <div class="text-center pt-1 mb-5 pb-1">
-                                                <button class="btn btn-primary btn-block gradient-custom-2 mb-3" type="button">LOGIN</button>
+                                                <button class="btn btn-primary btn-block gradient-custom-2 mb-3" type="submit">LOGIN</button>
                                             </div>
                                         </div>
                                     </form>
@@ -88,3 +103,9 @@
     </section>
 </body>
 </html>
+
+<?php 
+}else {
+   header("Location: index.php");
+}
+ ?>

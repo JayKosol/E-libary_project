@@ -17,6 +17,11 @@
 </head>
 <body>
      <div class="container">
+          <?php if (isset($_GET['error'])) { ?>
+               <div class="alert alert-danger" role="alert">
+               <?=htmlspecialchars($_GET['error'])?>
+               </div>
+          <?php } ?>
           <div>
                <p class="text-info">
                     <!-- <?php echo $alert;  ?> -->
@@ -33,10 +38,11 @@
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                          <div class="accordion-body">
                               <form action="./create_user.php" method="post">
+                                   
                                    <div class="mb-2">
                                         <label for="usertype" class="form-label">User Types</label>
                                         <select class="form-select" name="usertype" aria-label="Default select example">
-                                             <option selected style="display: none;">Please Select User Types</option>
+                                             <option style="display: none;">Please Select User Types</option>
                                              <option value="Admin">Admin</option>
                                              <option value="Librarain">Librarain</option>
                                         </select>
@@ -79,7 +85,11 @@
                     
                     
                 </div>
-               
+               <?php if (isset($_GET['alert'])) { ?>
+                    <div class="alert alert-info" role="alert">
+                    <?=htmlspecialchars($_GET['alert'])?>
+                    </div>
+               <?php } ?>
                 <div class="card">
                     <div class="card-header">
                         <h2>Users</h2>
@@ -96,7 +106,8 @@
                         echo "<tr>";
                             echo "<th>ID</th>";
                             echo "<th>User Types</th>";
-                            echo "<th>Password</th>";
+                            echo "<th>Username</th>";
+                            //echo "<th>Password</th>";
                             echo "<th>Position</th>";
                             echo "<th>Create Date</th>";
                             echo "<th>Description</th>";
@@ -108,13 +119,14 @@
                             echo "<tr>";
                                 echo "<td>".$u['userId']."</td>";
                                 echo "<td>".$u['userTypes']."</td>";
-                                echo "<td>".$u['password']."</td>";
+                                echo "<td>".$u['username']."</td>";
+                                //echo "<td>".$u['password']."</td>";
                                 echo "<td>".$u['position']."</td>";
                                 echo "<td>".$u['createDate']."</td>";
                                 echo "<td>".$u['description']."</td>";
                                 
                                 echo "<td>";
-                                    echo "<a href='' class='bi bi-trash'></a>";
+                                    echo "<a href='delete.user.php?id=".$u['userId']."'' class='bi bi-trash'></a>";
                                     // echo nl2br("\t");
                                     // echo "<a href='' class='bi bi-card-text'></a>";
                                     echo nl2br("\t| ");
