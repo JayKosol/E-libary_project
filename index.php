@@ -1,7 +1,43 @@
 <?php 
-  session_start();
 
-  if (!isset($_SESSION['userId']) && !isset($_SESSION['username'])) { 
+	include_once './Asset/dbconnection.php';
+
+	if($_SERVER['REQUEST_METHOD']=="POST"){
+		
+		$uname = $_POST['username'];
+		$pw =$_POST['password'] ;
+        
+		if (empty($uname)) {
+			header("Location: ./index.php?error=Username is required");
+		}elseif (empty($pw)){
+			header("Location: ./index.php?error=Password is required");
+		}else {
+			$stmt="SELECT * FROM users WHERE username='$uname'";
+			$query=$conn->query($stmt);
+
+            $row=$query->fetch();
+            // echo "<pre>";
+            // print_r($row);
+            // echo "</pre>";
+            if($row['password']==$pw){
+                header("Location: ./home.php");
+                exit;
+            }
+			// if($row=$query->fetch()){
+            //     echo $pw;
+			// 	if(password_verify($pw,$row['password'])){
+                   
+			// 		header("Location: ./home.php");
+			// 		exit;
+			// 	}else {
+			// 		header("Location: ./index.php?error=Incorrect password!");
+			// 	}
+			// }
+			else {
+				header("Location: ./index.php?error=Incorrect Username or Password!");
+			}
+		}
+	}
 ?>
 
 
@@ -11,7 +47,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include_once "./Asset/boostrap.php" ?>
+    <?php include_once "./Asset/boostrap.php" ;
+            ?>
     <?php require_once "./Asset/font.php" ?>
     <title>Login</title>
     <style>
@@ -70,15 +107,15 @@
                                         <?php } ?>
                                     </div>
                                     <!-- @form -->
-                                    <form action="./Users/login.user.php" method="POST">
+                                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
                                         <div class="row">
                                             <p>Please login to your account</p>
 
                                             <div class="col-12">
                                                 <label for="username">Username</label>
                                                 <input type="text" name="username" 
-                                                    value="<?php if(isset($_GET['username']))echo(htmlspecialchars($_GET['username'])) ?>"
-                                                    id="email" class="form-control mb-4" placeholder="Enter your username">
+                                                    value=""
+                                                    id="username" class="form-control mb-4" placeholder="Enter your username">
                                             </div>
                                             <br>
 
@@ -104,8 +141,3 @@
 </body>
 </html>
 
-<?php 
-}else {
-   header("Location: index.php");
-}
- ?>
