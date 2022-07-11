@@ -22,44 +22,44 @@
       </div>
       <ul class="nav-list">
                   <li>
-                        <a href="">
-                              <i class='bx bx-search'></i>
-                              <input type="text" placeholder="Search">
+                        <a href="#">
+                              <i class='i bx bx-search'></i>
+                              <input type="text" id="search" placeholder="Search">
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
                         <a href="">
-                              <i class='bx bxs-dashboard' ></i>
-                              Dashboard
+                              <i class='bx bxs-dashboard i' ></i>
+                              <span class="link_name">Dashboard</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
                         <a href="">
-                              <i class='bx bx-category' ></i>
-                              Category
+                              <i class='bx bx-category i' ></i>
+                              <span class="link_name">Category</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
                         <a href="">
-                              <i class='bx bxs-user-detail' ></i>
-                              Author
+                              <i class='bx bxs-user-detail i' ></i>
+                              <span class="link_name">Author</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
                         <a href="">
-                              <i class='bx bxs-book' ></i>
-                              Book
+                              <i class='bx bxs-book i' ></i>
+                              <span class="link_name">Book</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
                         <a href="">
-                              <i class='bx bxs-key' ></i>
-                              Issue
+                              <i class='bx bxs-key i' ></i>
+                              <span class="link_name">Issue</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
@@ -68,11 +68,31 @@
             <!-- @profile -->
             <div class="profile-content">
                   <div class="profile">
+                        <img src="./img/default.png" alt="">
                         <div class="profile-detail">
-
+                              <div class="name_job">
+                                    <div class="name">Username</div>
+                                    <div class="job">
+                                          <span>Administrator</span>
+                                          <i class='bx bx-log-out' id="btn_logout"></i>
+                                    </div>
+                                         
+                              </div>
+                              
                         </div>
                   </div>
             </div>
      </div>
+     <script>
+      let btn = document.querySelector("#btn");
+      let sidebar = document.querySelector(".sidebar");
+      let searchBtn = document.querySelector(".bx-search");
+      btn.onclick = function(){
+            sidebar.classList.toggle("active")
+      }
+      searchBtn.onclick = function(){
+            sidebar.classList.toggle("active")
+      }
+     </script>
 </body>
 </html>
