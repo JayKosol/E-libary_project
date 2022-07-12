@@ -63,6 +63,13 @@
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
+                  <li>
+                        <a href="">
+                              <i class='bi bi-people-fill' ></i>
+                              <span class="link_name">Users</span>
+                        </a>
+                        <!-- <i class='tool' ></i> -->
+                  </li>
             </ul>
 
             <!-- @profile -->
