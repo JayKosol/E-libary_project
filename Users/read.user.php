@@ -117,7 +117,7 @@
                         echo "<tbody>";
                         while($u=$user->fetch()){
                             echo "<tr>";
-                                echo "<td>".$u['userId']."</td>";
+                                echo "<td>".$u['id']."</td>";
                                 echo "<td>".$u['userTypes']."</td>";
                                 echo "<td>".$u['username']."</td>";
                                 echo "<td>".$u['password']."</td>";
@@ -126,11 +126,11 @@
                                 echo "<td>".$u['description']."</td>";
                                 
                                 echo "<td>";
-                                    echo "<a href='delete.user.php?id=".$u['userId']."'' class='bi bi-trash'></a>";
+                                    echo "<a href='delete.user.php?id=".$u['id']."'' class='bi bi-trash'></a>";
                                     // echo nl2br("\t");
                                     // echo "<a href='' class='bi bi-card-text'></a>";
                                     echo nl2br("\t| ");
-                                    echo "<a href='update.user.php?id=".$u['userId']."'' class='bi bi-file-earmark-medical'></a>";
+                                    echo "<a href='update.user.php?id=".$u['id']."'' class='bi bi-file-earmark-medical'></a>";
                                 echo "</td>";
                                 
                             echo "</tr>";
