@@ -12,7 +12,7 @@
 		}elseif (empty($pw)){
 			header("Location: ./index.php?error=Password is required");
 		}else {
-			$stmt="SELECT * FROM users WHERE username='$uname'";
+			$stmt="SELECT * FROM user_account WHERE username='$uname'";
 			$query=$conn->query($stmt);
 
             $row=$query->fetch();
