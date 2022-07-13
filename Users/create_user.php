@@ -27,7 +27,7 @@
                header("Location:./read.user.php?error=Create Date is required");
           }else{
 
-               $sql="INSERT INTO users(userTypes,username,password,position,createDate,description)";
+               $sql="INSERT INTO user_account(userTypes,username,password,position,createDate,description)";
                $sql.="VALUES (?,?,?,?,?,?)";
                if(insertData($conn,$sql,[$uType,$uname,$pw,$position,$createdate,$desc])){
                     header("Location:./read.user.php?error=One record has been added!");
