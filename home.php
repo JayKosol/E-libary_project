@@ -28,43 +28,47 @@
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
-                  <li>
-                        <a href="">
+                  <li id="btn_dashboard">
+                        <a href="#">
                               <i class='bx bxs-dashboard i' ></i>
                               <span class="link_name">Dashboard</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
-                        <a href="">
+                        <a href="#">
                               <i class='bx bx-category i' ></i>
                               <span class="link_name">Category</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
-                        <a href="">
+                        <a href="#">
                               <i class='bx bxs-user-detail i' ></i>
                               <span class="link_name">Author</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
-                        <a href="">
+                        <a href="#">
                               <i class='bx bxs-book i' ></i>
                               <span class="link_name">Book</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
-                        <a href="">
+                        <a href="#">
                               <i class='bx bxs-key i' ></i>
                               <span class="link_name">Issue</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
+<<<<<<< HEAD
                         <a href="<?php ?>" >
+=======
+                        <a href="#">
+>>>>>>> 489c8d31c69bdae2a98d48567281458f26ac2bdf
                               <i class='bi bi-people-fill' ></i>
                               <span class="link_name">Users</span>
                         </a>
@@ -90,16 +94,13 @@
                   </div>
             </div>
      </div>
-     <script>
-      let btn = document.querySelector("#btn");
-      let sidebar = document.querySelector(".sidebar");
-      let searchBtn = document.querySelector(".bx-search");
-      btn.onclick = function(){
-            sidebar.classList.toggle("active")
-      }
-      searchBtn.onclick = function(){
-            sidebar.classList.toggle("active")
-      }
-     </script>
+     
+
+     <div class="home_content">
+            <div class="dashboard">
+                  <?php include "./Asset/dashboard.php" ?>
+            </div>
+     </div>
+     <script src="./Asset/home.js"></script>
 </body>
 </html>
