@@ -51,9 +51,9 @@
                                              <label class="input-group-text" for="inputGroupSelect01">Gender</label>
                                              <select class="form-select" name="gender" aria-label="Default select example">
                                                   <option style="display: none;">Select Gender</option>
-                                                  <option value="male">Male</option>
-                                                  <option value="female">Female</option>
-                                                  <option value="other">Others</option>
+                                                  <option value="Male">Male</option>
+                                                  <option value="Female">Female</option>
+                                                  <option value="Others">Others</option>
                                              </select>
                                              </div>
                                         </div>
@@ -78,16 +78,16 @@
                                         <input type="email" name="email" id="email" class="form-control" placeholder="Email">
                                    </div>
                                    <div class="input-group mb-2">
-                                        <label for="username" class="input-group-text">Username</label>
-                                        <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                                        <label for="joindate" class="input-group-text">Join Date</label>
+                                        <input type="date" name="joindate" id="joindate" class="form-control" placeholder="Join Date">
                                    </div>
                                    <div class="input-group mb-2">
-                                        <label for="password" class="input-group-text">Password</label>
-                                        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                                        <label for="position" class="input-group-text">Position</label>
+                                        <input type="text" name="position" id="position" class="form-control" placeholder="Position">
                                    </div>
                                    <div class="input-group mb-2">
-                                        <label for="userid" class="input-group-text">User ID</label>
-                                        <input type="text" name="userid" id="userid" class="form-control" placeholder="User ID">
+                                        <label for="salary" class="input-group-text">Salary</label>
+                                        <input type="text" name="salary" id="salary" class="form-control" placeholder="Salary">
                                    </div>
                                    
                                    <div class="input-group mb-2">
@@ -124,7 +124,7 @@
                     
                 <?php 
                
-                    $sql="SELECT * FROM admins";
+                    $sql="SELECT * FROM users";
                     $admin=$conn->query($sql);
 
                     if($admin->rowCount()>0){
@@ -138,10 +138,12 @@
                             echo "<th>DOB</th>";
                             echo "<th>Address</th>";
                             echo "<th>Phone</th>";
-                            echo "<th>Username</th>";
-                            echo "<th>Password</th>";
-                            echo "<th>UserID</th>";
+                            echo "<th>Email</th>";
+                            echo "<th>Join Date</th>";
+                            echo "<th>Position</th>";
+                            echo "<th>Salary</th>";
                             echo "<th>Description</th>";
+                            echo "<th>Action</th>";
                         echo "</tr>";
                         echo "</thead>";
                         echo "<tbody>";
@@ -154,17 +156,23 @@
                                 echo "<td>".$ad['dob']."</td>";
                                 echo "<td>".$ad['address']."</td>";
                                 echo "<td>".$ad['phone']."</td>";
-                                echo "<td>".$ad['username']."</td>";
-                                echo "<td>".$ad['password']."</td>";
-                                echo "<td>".$ad['userId']."</td>";
+                                echo "<td>".$ad['email']."</td>";
+                                echo "<td>".$ad['joinDate']."</td>";
+                                echo "<td>".$ad['position']."</td>";
+                                echo "<td>".$ad['salary']."</td>";
                                 echo "<td>".$ad['description']."</td>";
                                 
                                 echo "<td>";
-                                    echo "<a href='delete.user.php?id=".$ad['id']."'' class='bi bi-trash'></a>";
-                                    // echo nl2br("\t");
-                                    // echo "<a href='' class='bi bi-card-text'></a>";
+                                   // if($ad['status']==0){
+                                   //      echo "<a href='delete.user.php?id=".$ad['id']."&status=1'>Enable</a>";
+                                   // }else{
+                                   //      echo "<a href='delete.user.php?id=".$ad['id']."&status=0' class=''>Disable</a>";
+                                   // }
+                                    echo "<a href='delete.admin.php?id=".$ad['id']."'' class='bi bi-trash'></a>";
+                                   //  echo nl2br("\t");
+                                   //  echo "<a href='' class='bi bi-card-text'></a>";
                                     echo nl2br("\t| ");
-                                    echo "<a href='update.user.php?id=".$ad['id']."'' class='bi bi-file-earmark-medical'></a>";
+                                    echo "<a href='update.admin.php?id=".$ad['id']."'' class='bi bi-file-earmark-medical'></a>";
                                 echo "</td>";
                                 
                             echo "</tr>";

@@ -97,7 +97,7 @@
                     
                 <?php 
                
-                    $sql="SELECT * FROM users";
+                    $sql="SELECT * FROM user_account";
                     $user=$conn->query($sql);
 
                     if($user->rowCount()>0){

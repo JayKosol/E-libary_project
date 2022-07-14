@@ -4,7 +4,7 @@
      if(isset($_GET['id'])&& !empty($_GET['id'])){
           $id=$_GET['id'];
           //echo $id;
-          $sql="SELECT * FROM users WHERE userId=:id";
+          $sql="SELECT * FROM user_account WHERE userId=:id";
           $presql=$conn->prepare($sql);
           
           $presql->bindParam(":id",$pa_id);
@@ -34,7 +34,7 @@
           $cd=$_POST['createdate'];
           $desc=$_POST['description'];
 
-          $sqlUp="UPDATE users SET userTypes=:utype, username=:uname, `password`=:pw, position=:position, createDate=:cd, `description`=:desc WHERE userId=:id";
+          $sqlUp="UPDATE user_account SET userTypes=:utype, username=:uname, `password`=:pw, position=:position, createDate=:cd, `description`=:desc WHERE userId=:id";
           $stm=$conn->prepare($sqlUp);
 
           $stm->bindParam(":utype",$pa_utype);

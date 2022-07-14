@@ -10,9 +10,9 @@
           $address=$_POST['address'];
           $phone=$_POST['phone'];
           $email=$_POST['email'];
-          $uname=$_POST['username'];
-          $pw=$_POST['password'];
-          $userid=$_POST['userid'];
+          $joindate=$_POST['joindate'];
+          $position=$_POST['position'];
+          $salary=$_POST['salary'];
           $desc=$_POST['description'];
           
           if(empty($fname)){
@@ -32,20 +32,22 @@
           elseif(empty($phone)){
                header("Location:./read.admin.php?error=Phone is required");
           }
-          elseif(empty($uname)){
-               header("Location:./read.admin.php?error=Username is required");
+          elseif(empty($email)){
+               header("Location:./read.admin.php?error=Email is required");
           }
-          elseif(empty($pw)){
-               header("Location:./read.admin.php?error=Password is required");
+          elseif(empty($joindate)){
+               header("Location:./read.admin.php?error=Join Date is required");
           }
-          elseif(empty($userid)){
-               header("Location:./read.admin.php?error=User ID is required");
+          elseif(empty($position)){
+               header("Location:./read.admin.php?error=Position is required");
+          }elseif(empty($salary)){
+               header("Location:./read.admin.php?error=Salary is required");
           }
           else{
 
-               $sql="INSERT INTO admins(firstName,lastName,gender,dob,`address`,phone,email,username,`password`,userId,`description`)";
+               $sql="INSERT INTO users(firstName,lastName,gender,dob,`address`,phone,email,`description`,joinDate,position,salary)";
                $sql.="VALUES (?,?,?,?,?,?,?,?,?,?,?)";
-               if(insertData($conn,$sql,[$fname,$lname,$gender,$dob,$address,$phone,$email,$uname,$pw,$userid,$desc])){
+               if(insertData($conn,$sql,[$fname,$lname,$gender,$dob,$address,$phone,$email,$desc,$joindate,$position,$salary])){
                     header("Location:./read.admin.php?error=One record has been added!");
                }else{
                     header("Location:./read.admin.php?error=Connot create new record!");
