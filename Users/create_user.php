@@ -7,8 +7,8 @@
           
           $uType=$_POST['usertype'];
           $uname=$_POST['username'];
-          $pw=$_POST['password'];
-          //$pw=password_hash($_POST['password'],PASSWORD_DEFAULT);
+          //$pw=$_POST['password'];
+          $pw=password_hash($_POST['password'],PASSWORD_DEFAULT);
           $position=$_POST['position'];
           $createdate=$_POST['createdate'];
           $desc=$_POST['description'];

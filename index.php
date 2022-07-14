@@ -12,27 +12,18 @@
 		}elseif (empty($pw)){
 			header("Location: ./index.php?error=Password is required");
 		}else {
-			$stmt="SELECT * FROM user_account WHERE username='$uname'";
+			$stmt="SELECT username, `password` FROM user_account WHERE username='$uname'";
 			$query=$conn->query($stmt);
-
-            $row=$query->fetch();
-            // echo "<pre>";
-            // print_r($row);
-            // echo "</pre>";
-            if($row['password']==$pw){
-                header("Location: ./home.php");
-                exit;
-            }
-			// if($row=$query->fetch()){
-            //     echo $pw;
-			// 	if(password_verify($pw,$row['password'])){
+			if($row=$query->fetch()){
+                echo $pw;
+				if(password_verify($pw,$row['password'])){
                    
-			// 		header("Location: ./home.php");
-			// 		exit;
-			// 	}else {
-			// 		header("Location: ./index.php?error=Incorrect password!");
-			// 	}
-			// }
+					header("Location: ./home.php");
+					exit;
+				}else {
+					header("Location: ./index.php?error=Incorrect password!");
+				}
+			}
 			else {
 				header("Location: ./index.php?error=Incorrect Username or Password!");
 			}

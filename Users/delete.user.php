@@ -8,7 +8,7 @@
     // $q->exec();
     if(isset($_GET['id'])){
         $id=$_GET['id'];
-        $sql="DELETE FROM user_account WHERE userId=$id";
+        $sql="DELETE FROM user_account WHERE id=$id";
         if($conn->exec($sql)){
           header("Location:./read.user.php?alert=One record has been delete!");
         }else{

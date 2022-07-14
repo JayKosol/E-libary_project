@@ -143,6 +143,7 @@
                             echo "<th>Position</th>";
                             echo "<th>Salary</th>";
                             echo "<th>Description</th>";
+                            echo "<th>Photo</th>";
                             echo "<th>Action</th>";
                         echo "</tr>";
                         echo "</thead>";
@@ -161,6 +162,7 @@
                                 echo "<td>".$ad['position']."</td>";
                                 echo "<td>".$ad['salary']."</td>";
                                 echo "<td>".$ad['description']."</td>";
+                                echo "<td>".$ad['photo']."</td>";
                                 
                                 echo "<td>";
                                    // if($ad['status']==0){

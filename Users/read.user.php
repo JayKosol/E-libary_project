@@ -1,3 +1,20 @@
+<?php  
+     // require_once "./../Asset/dbconnection.php";
+     // if($_SERVER['REQUEST_METHOD']=="POST"){
+     //      $search=$_POST['search'];
+     //      $sql_s="SELECT * FROM user_account WHERE username LIKE :search ";
+     //      $stmt=$conn->prepare($sql_s);
+     //      $stmt->bindParam(":search",$p_search);
+     //      $p_search=$search;
+          
+     //      $stmt->execute();
+     //      if($re=$stmt->fetch()){
+               
+     //      }     
+     // }
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,14 +94,17 @@
                </div>
           </div>
           <!-- form show data from Database -->
+          <form action="" method="post">
           <div class="row">
             <div class="col-md-12">
-                <div class="input-group mb-3">
-                    <label for="search" class="input-group-text">Search</label>
-                    <input type="text" name="search" id="" class="form-control">
-                    
-                    
-                </div>
+               
+                    <div class="input-group mb-3">
+                         <label for="search" class="input-group-text">Search</label>
+                         <input type="text" name="search" id="" class="form-control">
+                         <input type="submit" value="Submit" class="btn btn-primary">
+                         
+                    </div>
+                
                <?php if (isset($_GET['alert'])) { ?>
                     <div class="alert alert-info" role="alert">
                     <?=htmlspecialchars($_GET['alert'])?>
@@ -97,8 +117,11 @@
                     
                 <?php 
                
+                    //$sql="SELECT * FROM user_account";
                     $sql="SELECT * FROM user_account";
                     $user=$conn->query($sql);
+
+
 
                     if($user->rowCount()>0){
                         echo "<table class='table table-striped table-hover'>";
@@ -107,10 +130,11 @@
                             echo "<th>ID</th>";
                             echo "<th>User Types</th>";
                             echo "<th>Username</th>";
-                            echo "<th>Password</th>";
+                            //echo "<th>Password</th>";
                             echo "<th>Position</th>";
                             echo "<th>Create Date</th>";
                             echo "<th>Description</th>";
+                            //echo "<th>Photo</th>";
                             echo "<th>Action</th>";
                         echo "</tr>";
                         echo "</thead>";
@@ -120,10 +144,11 @@
                                 echo "<td>".$u['id']."</td>";
                                 echo "<td>".$u['userTypes']."</td>";
                                 echo "<td>".$u['username']."</td>";
-                                echo "<td>".$u['password']."</td>";
+                                //echo "<td>".$u['password']."</td>";
                                 echo "<td>".$u['position']."</td>";
                                 echo "<td>".$u['createDate']."</td>";
                                 echo "<td>".$u['description']."</td>";
+                                //echo "<td>".$u['photo']."</td>";
                                 
                                 echo "<td>";
                                     echo "<a href='delete.user.php?id=".$u['id']."'' class='bi bi-trash'></a>";
@@ -146,7 +171,7 @@
                     <div class="card-footer">
                         <div class="mb-1 mt-1">
                             <a href="">
-                                <label for="#new" class="text-info" style="font-size: 20px;" >Create New Admin</label>
+                                <!-- <label for="#new" class="text-info" style="font-size: 20px;" >Create New Admin</label> -->
                             </a>
                             
                         </div>
@@ -154,6 +179,7 @@
                 </div>
             </div>
         </div>
+        </form>
      </div>
 </body>
 </html>
