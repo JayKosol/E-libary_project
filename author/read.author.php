@@ -30,16 +30,16 @@
                                    <div class="row">
                                         <div class="col">
                                              <div class="input-group mb-2">
-                                                  <label for="fname" class="input-group-text">First Name</label>
-                                                  <input type="text" name="fname" id="fname" class="form-control" placeholder="First Name">
+                                                  <label for="authorName" class="input-group-text">Author's name</label>
+                                                  <input type="text" name="authorName" id="authorName" class="form-control" placeholder="Author's name">
                                              </div>
                                         </div>
-                                        <div class="col">
+                                        <!-- <div class="col">
                                              <div class="input-group mb-2">
                                                   <label for="lname" class="input-group-text">Last Name</label>
                                                   <input type="text" name="lname" id="lname" class="form-control" placeholder="Last Name">
                                              </div>
-                                        </div>
+                                        </div> -->
                                    </div>
                                   
                                    
@@ -92,11 +92,12 @@
                         echo "<thead>";
                         echo "<tr>";
                             echo "<th>ID</th>";
-                            echo "<th>FirstName</th>";
-                            echo "<th>LastName</th>";
+                            echo "<th>Author's Name</th>";
+                            //echo "<th>LastName</th>";
                             echo "<th>Book Qty</th>";
                             echo "<th>Contact</th>";
                             echo "<th>Description</th>";
+                            echo "<th>Action</th>";
                             
                            
                         echo "</tr>";
@@ -105,9 +106,9 @@
                         while($au=$auth->fetch()){
                             echo "<tr>";
                                 echo "<td>".$au['authorId']."</td>";
-                                echo "<td>".$au['firstName']."</td>";
-                                echo "<td>".$au['lastName']."</td>";
-                                echo "<td>".$au['bookQty']."</td>";
+                                echo "<td>".$au['authorName']."</td>";
+                                //echo "<td>".$au['lastName']."</td>";
+                                echo "<td>".$au['bookQty']." ក្បាល"."</td>";
                                 echo "<td>".$au['contact']."</td>";
                                 echo "<td>".$au['description']."</td>";
                                 
@@ -122,7 +123,7 @@
                                    //  echo nl2br("\t");
                                    //  echo "<a href='' class='bi bi-card-text'></a>";
                                     echo nl2br("\t| ");
-                                    echo "<a href='update.author.php?id=".$au['authorId']."'' class='bi bi-file-earmark-medical'></a>";
+                                    echo "<a href='./update.author.php?id=".$au['authorId']."'' class='bi bi-file-earmark-medical'></a>";
                                 echo "</td>";
                                 
                             echo "</tr>";

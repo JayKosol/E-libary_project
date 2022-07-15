@@ -64,11 +64,8 @@
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li>
-<<<<<<< HEAD
                         <a href="<?php ?>" >
-=======
                         <a href="#">
->>>>>>> 489c8d31c69bdae2a98d48567281458f26ac2bdf
                               <i class='bi bi-people-fill' ></i>
                               <span class="link_name">Users</span>
                         </a>
