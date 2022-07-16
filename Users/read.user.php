@@ -1,38 +1,4 @@
-<?php  
-     // require_once "./../Asset/dbconnection.php";
-     // if($_SERVER['REQUEST_METHOD']=="POST"){
-     //      $search=$_POST['search'];
-     //      $sql_s="SELECT * FROM user_account WHERE username LIKE :search ";
-     //      $stmt=$conn->prepare($sql_s);
-     //      $stmt->bindParam(":search",$p_search);
-     //      $p_search=$search;
-          
-     //      $stmt->execute();
-     //      if($re=$stmt->fetch()){
-               
-     //      }     
-     // }
 
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <?php require_once "./../Asset/dbconnection.php";
-           include_once "./../Asset/boostrap.php";
-     ?>
-     <title>Read User</title>
-     <style>
-          .card{
-               font-size: 15px;
-          }
-     </style>
-</head>
-<body>
      <div class="container">
           <?php if (isset($_GET['error'])) { ?>
                <div class="alert alert-danger" role="alert">
@@ -181,5 +147,3 @@
         </div>
         </form>
      </div>
-</body>
-</html>

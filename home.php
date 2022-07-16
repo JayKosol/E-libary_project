@@ -35,36 +35,35 @@
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
-                  <li>
+                  <li id="btn_category">
                         <a href="#">
                               <i class='bx bx-category i' ></i>
                               <span class="link_name">Category</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
-                  <li>
+                  <li id="btn_author">
                         <a href="#">
                               <i class='bx bxs-user-detail i' ></i>
                               <span class="link_name">Author</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
-                  <li>
+                  <li id="btn_book">
                         <a href="#">
                               <i class='bx bxs-book i' ></i>
                               <span class="link_name">Book</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
-                  <li>
+                  <li id="btn_issue">
                         <a href="#">
                               <i class='bx bxs-key i' ></i>
                               <span class="link_name">Issue</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
-                  <li>
-                        <a href="<?php ?>" >
+                  <li id="btn_user">
                         <a href="#">
                               <i class='bi bi-people-fill' ></i>
                               <span class="link_name">Users</span>
@@ -97,6 +96,13 @@
             <div class="dashboard">
                   <?php include "./Asset/dashboard.php" ?>
             </div>
+            <div class="user">
+                  <?php include_once "./Users/read.user.php" ?>
+            </div>
+            <div class="issue"></div>
+            <div class="book"></div>
+            <div class="author"></div>
+            <div class="category"></div>
      </div>
      <script src="./Asset/home.js"></script>
 </body>
