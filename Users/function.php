@@ -18,7 +18,7 @@ function fill_author($connect)
 {
     //WHERE author_status = 'Enable'
 	$query = "
-	SELECT authorName FROM authors 
+	SELECT * FROM authors 
 	WHERE authorId
 	";
 
@@ -28,7 +28,7 @@ function fill_author($connect)
 
 	foreach($result as $row)
 	{
-		$output .= '<option value="'.$row["authorName"].'">'.$row["authorName"].'</option>';
+		$output .= '<option value="'.$row["authorId"].'">'.$row["authorName"].'</option>';
 	}
 
 	return $output;
@@ -54,10 +54,9 @@ function fill_category($connect)
 {
     //WHERE category_status = 'Enable' 
 	$query = "
-	SELECT categoryName FROM category 
-	
-	ORDER BY categoryName ASC
+	SELECT * FROM category 
 	";
+	// ORDER BY categoryName ASC
 
 	$result = $connect->query($query);
 
@@ -65,7 +64,7 @@ function fill_category($connect)
 
 	foreach($result as $row)
 	{
-		$output .= '<option value="'.$row["categoryName"].'">'.$row["categoryName"].'</option>';
+		$output .= '<option value="'.$row["categoryId"].'">'.$row["categoryName"].'</option>';
 	}
 
 	return $output;

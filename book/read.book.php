@@ -21,7 +21,7 @@
           <div class="accordion accordion-flush" id="accordionFlushExample">
                <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
-                         <button id="new" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" >
+                         <button id="new" class="accordion-button collapsed text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" >
                               Create New Author
                          </button>
                     </h2>
@@ -36,25 +36,32 @@
                                                   <input type="text" name="booktitle" id="booktitle" class="form-control" placeholder="Title ...">
                                              </div>
                                         </div>
+                                        <div class="col">
+                                             <div class="input-group mb-2">
+                                                  <label for="isbn" class="input-group-text">Book's ISBN</label>
+                                                  <input type="text" name="isbn" id="isbn" class="form-control" placeholder="ISBN ...">
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="row">
+                                        <div class="col">
+                                             <div class="input-group mb-2">
+                                                  <label for="author" class="input-group-text">Authors</label>
+                                                  <select name="author" class="form-control" id="author">
+                                                       <?php echo fill_author($conn); ?>
+                                                  </select>
+                                             </div>
+                                        </div>
+                                        <div class="col">
+                                             <div class="input-group mb-2">
+                                                  <label for="category" class="input-group-text">Category</label>
+                                                  <select name="category" class="form-control" id="category">
+                                                       <?php echo fill_category($conn); ?>
+                                                  </select>
+                                             </div>
+                                        </div>
                                    </div>
                                   
-                                   
-                                   <div class="input-group mb-2">
-                                        <label for="isbn" class="input-group-text">Book's ISBN</label>
-                                        <input type="text" name="isbn" id="isbn" class="form-control" placeholder="ISBN ...">
-                                   </div>
-                                   <div class="input-group mb-2">
-                                        <label for="author" class="input-group-text">Authors</label>
-                                        <select name="author" class="form-control" id="author">
-                                             <?php echo fill_author($conn); ?>
-                                        </select>
-                                   </div>
-                                   <div class="input-group mb-2">
-                                        <label for="category" class="input-group-text">Category</label>
-                                        <select name="category" class="form-control" id="category">
-                                             <?php echo fill_category($conn); ?>
-                                        </select>
-                                   </div>
                                    <div class="input-group mb-2">
                                         <label for="language" class="input-group-text">Book's Language</label>
                                         <select name="language" class="form-control" id="language">
@@ -78,18 +85,26 @@
                                    </div>
                                    <div class="input-group mb-2">
                                         <label for="desc" class="input-group-text">Description</label>
-                                        <textarea name="desc" style="height: 100px;" class="form-control" id="desc" cols="30" rows="10"></textarea>
+                                        <textarea name="desc" style="height: 70px;" class="form-control" id="desc" cols="30" rows="10"></textarea>
                                    </div>
-                                   <div class="input-group mb-2">
-                                        <label for="createdate" class="input-group-text">Create Date</label>
-                                        <input type="date" name="createdate" id="createdate" class="form-control" placeholder="Date ...">
+                                   <div class="row">
+                                        <div class="col">
+                                             <div class="input-group mb-2">
+                                                  <label for="createdate" class="input-group-text">Create Date</label>
+                                                  <input type="date" name="createdate" id="createdate" class="form-control" placeholder="Date ...">
+                                             </div>
+                                        </div>
+                                        <div class="col">
+                                             <div class="input-group mb-3">
+                                                  <label for="createby" class="input-group-text">Create By</label>
+                                                  <select name="createby" class="form-control" id="createby">
+                                                       <?php echo fill_user_acc($conn); ?>
+                                                  </select>
+                                             </div>
+                                        </div>
                                    </div>
-                                   <div class="input-group mb-2">
-                                        <label for="createby" class="input-group-text">Create By</label>
-                                        <select name="createby" class="form-control" id="createby">
-                                             <?php echo fill_user_acc($conn); ?>
-                                        </select>
-                                   </div>
+                                   
+                                   
                                    <div class="mb-4">
                                         <button type="submit" class="btn btn-primary">Create Now</button>
                                    </div>
@@ -150,15 +165,15 @@
                                              <td><?php echo $book['languages']; ?></td>
                                              <td><?php echo $book['releaseYear']; ?></td>
                                              <td><?php echo $book['bookEdition']; ?></td>
-                                             <td style="width: 55px;height:90px;"><?php echo $book['photos']; ?></td>
+                                             <td style="width: 55px;height:70px;"><?php echo $book['photos']; ?></td>
                                              <td><?php echo $book['createDate']; ?></td>
                                              <td><?php echo $book['createBy']; ?></td>
                                              <td  >
-                                                  <a onclick="return confirm('Do want to delete this record?')" href="./delete.cate.php?id=<?php echo $cate['categoryId'];?>" class="bi bi-trash"></a>
+                                                  <a onclick="return confirm('Do want to delete this record?')" href="./delete.book.php?id=<?php echo $book['bookId'];?>" class="bi bi-trash"></a>
                                                   <?php echo " | " ?>
-                                                  <a  href="./update.cate.php?id=<?php echo $cate['categoryId'];?>" class="bi bi-file-earmark-medical"></a>
+                                                  <a  href="./update.book.php?id=<?php echo $book['bookId'];?>" class="bi bi-file-earmark-medical"></a>
                                                   <?php echo " | " ?>
-                                                  <a  href="./update.cate.php?id=<?php echo $cate['categoryId'];?>" class="bi bi-card-text"></i></a>
+                                                  <a  href="./detail.book.php?id=<?php echo $book['bookId'];?>" class="bi bi-card-text"></a>
                                              </td>
 
                                    <?php 
