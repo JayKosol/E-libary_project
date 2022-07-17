@@ -98,7 +98,8 @@
           <textarea name="desc"  style="height: 100px;" class="form-control" id="desc" cols="30" rows="10"><?php echo $desc; ?></textarea>
      </div>
      <div class="mb-3">
-          <button type="submit" class="btn btn-primary">Update Now</button>
+          <button onclick="return confirm('Do want to update this record?')" type="submit" class="btn btn-primary">Update Now</button>
+          <a href="./read.author.php" style="float: right ;" class="btn btn-primary">Back</a>
      </div>
 </form>
 </div>

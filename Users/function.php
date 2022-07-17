@@ -19,16 +19,32 @@ function fill_author($connect)
     //WHERE author_status = 'Enable'
 	$query = "
 	SELECT authorName FROM authors 
-	ORDER BY authorName ASC
+	WHERE authorId
 	";
 
 	$result = $connect->query($query);
 
-	$output = '<option value="">Select Author</option>';
+	$output = '<option style="display:none;" value="">Select Author</option>';
 
 	foreach($result as $row)
 	{
 		$output .= '<option value="'.$row["authorName"].'">'.$row["authorName"].'</option>';
+	}
+
+	return $output;
+}
+function fill_user_acc($connect)
+{
+    //WHERE author_status = 'Enable'
+	$query = "SELECT userTypes FROM user_account";
+
+	$result = $connect->query($query);
+
+	$output = '<option style="display:none;" value="">Select user type</option>';
+
+	foreach($result as $k=>$row)
+	{
+		$output .= '<option value="'.$row["userTypes"].'">'.$row["userTypes"].'</option>';
 	}
 
 	return $output;
@@ -45,7 +61,7 @@ function fill_category($connect)
 
 	$result = $connect->query($query);
 
-	$output = '<option value="">Select Category</option>';
+	$output = '<option style="display:none;" value="">Select Category</option>';
 
 	foreach($result as $row)
 	{
@@ -110,4 +126,25 @@ function total_category($connect)
 		$total = $row["Total"];
 	}
 	return $total;
+}
+// function create list language
+function languege_list(){
+	$list=['Khmer','English','Chinese','Japan','Thai'];
+	$output = '<option style="display:none;" value="">Select Language</option>';
+	foreach($list as $row)
+	{
+		$output .= '<option value="'.$row.'">'.$row.'</option>';
+	}
+
+	return $output;
+}
+function edition_list(){
+	$list=['First','Second','Third','Fourth','Fifth','Sixth','Seventh','Eighth','Nineth','Tenth'];
+	$output = '<option style="display:none;" value="">Select Edition</option>';
+	foreach($list as $row)
+	{
+		$output .= '<option value="'.$row.'">'.$row.'</option>';
+	}
+
+	return $output;
 }

@@ -139,7 +139,7 @@
                     <div class="card-footer">
                         <div class="mb-1 mt-1">
                             <a href="">
-                                <!-- <label for="#new" class="text-info" style="font-size: 20px;" >Create New Admin</label> -->
+                                <!-- <label for="#new" class="text-info" style="font-szie: 20px;" >Create New Admin</label> -->
                             </a>
                             
                         </div>

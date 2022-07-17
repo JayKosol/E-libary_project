@@ -113,7 +113,8 @@
                               cols="30" rows="10" style="height:100px ;"><?php echo $desc; ?></textarea>
                          </div>
                          <div class="mb-2">
-                              <button type="submit" class="btn btn-primary">Update Now</button>
+                              <button onclick="return confirm('Do want to update this record?')" type="submit" class="btn btn-primary">Update Now</button>
+                              <a href="./read.user.php" class="btn btn-primary" style="float: right;">Back</a>
                          </div>
                     </form>
                </div>
