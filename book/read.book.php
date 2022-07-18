@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Book page</title>
-     <?php include_once './../Asset/boostrap.php';
-               include_once './../Users/function.php';
-               include_once './../Asset/dbconnection.php' ?>
-</head>
-<body>
+
      <div class="container mt-3">
           <?php if (isset($_GET['error'])) { ?>
                     <div class="alert alert-danger" role="alert">
@@ -191,5 +180,3 @@
             </div>
         </div>
      </div>
-</body>
-</html>
