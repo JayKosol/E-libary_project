@@ -187,65 +187,16 @@ body{
 #home_content .mybtn{
     float: right;
 }
+#home_content h2{
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 1rem;
+}
 section{
     width: 100%;
     height: 100%;
     position: relative;
 }
-.dashboard{
-    width: 100%;
-    height: 100%;
-    right: 0;
-}
-/* .dashboard.active{
-    display: block;
-} */
-.user{
-    display: none;
-    width: 100%;
-    height: 100%;
-    right: 0;
-}
-.user.active{
-    display: block;
-}
-.issue{
-    display: none;
-    width: 100%;
-    height: 100%;
-    right: 0;
-}
-.issue.active{
-    display: block;
-}
-.book{
-    display: none;
-    width: 100%;
-    height: 100%;
-    right: 0;
-}
-.book.active{
-    display: block;
-}
-.author{
-    display: none;
-    width: 100%;
-    height: 100%;
-    right: 0;
-}
-.author.active{
-    display: block;
-}
-.category{
-    display: none;
-    width: 100%;
-    height: 100%;
-    right: 0;
-}
-.category.active{
-    display: block;
-}
-
 .pages .page{
     display: none;
 }

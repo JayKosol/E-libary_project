@@ -95,15 +95,26 @@
 
      <div id="home_content" class="pages">
             <div class="page is-active" data-page="1">
+         
                   <?php include "./Asset/dashboard.php" ?>
             </div>
-            <div class="page" data-page="2"></div>
-            <div class="page" data-page="3"></div>
+            <div class="page" data-page="2">
+             
+                  <?php include_once "./category/read.cate.php" ?>
+            </div>
+            <div class="page" data-page="3">
+               
+                  <?php include_once "./author/read.author.php" ?>
+            </div>
             <div class="page" data-page="4">
+                
                   <?php include_once "./book/read.book.php" ?>
             </div>
-            <div class="page" data-page="5"></div>
+            <div class="page" data-page="5">
+
+            </div>
             <div class="page" data-page="6">
+                  
                   <?php include_once "./Users/read.user.php" ?>
             </div>
      </div>
