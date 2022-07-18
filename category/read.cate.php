@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
      include_once './../Asset/boostrap.php';
      require_once './../Asset/dbconnection.php';
@@ -43,9 +42,6 @@
      
 </head>
 <body>
-=======
-
->>>>>>> 1f06282c170bbe62695abd8c4d3d47de3216266e
      <div class="container mt-3">
           <?php if (isset($_GET['error'])) { ?>
                     <div class="alert alert-danger" role="alert">
