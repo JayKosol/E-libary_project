@@ -1,3 +1,37 @@
+<?php 
+     include_once './../Asset/boostrap.php';
+     require_once './../Asset/dbconnection.php';
+     include_once './../Users/function.php';
+          
+     if(isset($_GET['limit'])){
+          $lim=$_GET['limit'];
+     }else{
+         $lim=""; 
+     }
+     if($lim==0 || empty($lim)){
+          $limit=5;
+     }else{
+          $limit=$lim;
+     }
+     //echo $limit;
+     if(isset($_GET['page'])){
+          $pag=$_GET['page'];
+     }else{
+          $pag="";
+     }
+     if($pag==0 || empty($pag)){
+          $page=0;
+     }else{
+          $page=$pag;
+     }
+     if($page == 0){
+          $pagination=1;
+     }else{
+          $pagination=$page;
+     }
+     $offset= ceil($pagination*$limit)-$limit;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +39,7 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Category page</title>
-     <?php include_once './../Asset/boostrap.php';
-          require_once './../Asset/dbconnection.php';
-          include_once './../Users/function.php' ?>
+     
 </head>
 <body>
      <div class="container mt-3">
@@ -68,14 +100,35 @@
                </div>
           </div>
           <!-- form show data from Database -->
-          <div class="row">
+          <div class="row g-3">
             <div class="col-md-12">
-                <div class="input-group mb-3">
-                    <label for="search" class="input-group-text">Search</label>
-                    <input type="text" name="search" id="" class="form-control">
-                    
-                    
+                <div class=" mt-3 mb-2">
+                    <div class="row g-6">
+                         <div class="col-md-8">
+                              <div class="input-group">
+                                   <label for="search" class="input-group-text">Search</label>
+                                   <input type="text" name="search" id="" class="form-control">
+                              </div>
+                              
+                         </div>
+                         <div class="col-md-2">
+                              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                         </div>
+                         <div class="col" >
+                              <div class="input-group">
+                                   <label for="search" class="input-group-text">Page/</label>
+                                   <select class="form-select" aria-label="Default select example">
+                                   
+                                        <option value="1">5</option>
+                                        <option value="2">15</option>
+                                        <option value="3">25</option>
+                                   </select>
+                              </div>
+                              
+                         </div>
+                    </div>
                 </div>
+
                <?php if (isset($_GET['alert'])) { ?>
                     <div class="alert alert-info" role="alert">
                     <?=htmlspecialchars($_GET['alert'])?>
@@ -96,7 +149,14 @@
                                    <th style="width: 440px;">Description</th>
                                    <th>Action</th>
                                    <?php
-                                        $sql="SELECT * FROM category";
+                                        $sql="SELECT * FROM category LIMIT $limit OFFSET $offset";
+                                        $queryCount="SELECT * FROM category";
+                                        $reCount=$conn->query($queryCount);
+                                        $count=$reCount->rowCount();
+                                        $countPage=ceil($count /$limit);
+
+                                        //echo $count;
+
                                         $stm=$conn->query($sql);
                                         if($stm->rowCount()>0){
                                              while($cate=$stm->fetch()):
@@ -129,16 +189,25 @@
 
                 </div>
             </div>
-          <nav aria-label="Page navigation example">
-               <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                         <a class="page-link">Previous</a>
+          <nav aria-label="Page navigation example ">
+               <ul class="pagination justify-content-center mt-2">
+               <li class="page-item <?php echo $pagination ==1 ? 'disabled':''; ?>">
+                         <a class="page-link" href="./read.cate.php?limit=<?php echo $limit?>&page=<?php echo $pagination-1?>">Previous</a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                         <a class="page-link" href="#">Next</a>
+
+                    <?php
+                         for($i=1; $i<=$countPage;$i++){
+                              ?>
+                              <li class="page-item <?php echo $pagination ==$i ?'active':''; ?>"><a class="page-link"
+                               href="./read.cate.php?limit=<?php echo $limit?>&page=<?php echo $i;?>"><?php echo $i ?></a></li>
+                              <?php
+                         }
+                    ?>
+                    
+                   
+                    
+                    <li class="page-item <?php echo $pagination >= $countPage ? 'disabled':''; ?>">
+                         <a class="page-link" href="./read.cate.php?limit=<?php echo $limit?>&page=<?php echo $pagination+1?>">Next</a>
                     </li>
                </ul>
           </nav>

@@ -1,5 +1,5 @@
 <?php
-     require_once './../Asset/dbconnection.php';
+     include_once './../Asset/dbconnection.php';
      include_once './../Users/function.php';
      if($_SERVER['REQUEST_METHOD']=="POST"){
           $btitle=$_POST['booktitle'];
@@ -9,7 +9,7 @@
           $language=$_POST['language'];
           $year=$_POST['year']; 
           $edition=$_POST['edition']; 
-          $img="images/".basename($_FILES['photo']['name']);
+          $img="img/".basename($_FILES['photo']['name']);
           move_uploaded_file($_FILES['photo']['tmp_name'],$img);
           $photo=$img; 
          
