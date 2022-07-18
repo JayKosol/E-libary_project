@@ -85,15 +85,15 @@
                     <div class="card-header">
                         <h3>Category's Information</h3>
                     </div>
-                    <div class="card-body">
-                         <table class="table table-hover table-striped">
+                    <div class="">
+                         <table class="table table-hover table-striped table-bordered">
                               <tr>
                               
                                    <th>ID</th>
                                    <th>Category Name</th>
                                    <th>Create Date</th>
                                    <th>Create By</th>
-                                   <th>Description</th>
+                                   <th style="width: 440px;">Description</th>
                                    <th>Action</th>
                                    <?php
                                         $sql="SELECT * FROM category";
@@ -129,6 +129,19 @@
 
                 </div>
             </div>
+          <nav aria-label="Page navigation example">
+               <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                         <a class="page-link">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                         <a class="page-link" href="#">Next</a>
+                    </li>
+               </ul>
+          </nav>
         </div>
         
      </div>

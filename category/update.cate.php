@@ -93,8 +93,8 @@
                </div>
                <div class="input-group mb-2">
                     <label for="createBy" class="input-group-text">Create By</label>
-                    <select name="createBy" value="<?php echo $createB; ?>" class="form-control" id="createBy">
-                         <!-- <option value=""><?php // echo $createB; ?></option> -->
+                    <select name="createBy" class="form-control" id="createBy">
+                         <option value="<?php echo $createB;?>"><?php echo $createB; ?></option>
                          <?php echo fill_user_acc($conn); ?>
                     </select>
                </div>
