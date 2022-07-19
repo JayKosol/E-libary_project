@@ -47,11 +47,11 @@
           <?php } ?>
           
           <!-- pop menu create new users -->
-          <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion accordion-flush " id="accordionFlushExample">
                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                         <button id="new" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" >
-                              Create New Author
+                    <h2 class="accordion-header " id="flush-headingOne">
+                         <button id="new" class="accordion-button collapsed text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" >
+                              Create New Category
                          </button>
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
@@ -102,7 +102,7 @@
             <div class="col-md-12">
                 <div class=" mt-3 mb-1">
                     <div class="row g-6">
-                         <div class="col-md-7">
+                         <div class="col-md-8">
                               <form id="search_box">
                                    <div class="input-group d-flex">
                                         <label for="search" class="input-group-text">Search</label>
@@ -113,7 +113,7 @@
                              
                               
                          </div>
-                         <div class="col-md-3">
+                         <div class="col-md-2">
                               <form id="search_box">
                                    <div class="input-group" style="width: 155px;float:right;">
                                         <label for="sortBy" class="input-group-text">Sort By</label>
