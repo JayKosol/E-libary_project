@@ -32,6 +32,12 @@
           $pagination=$page;
      }
      $offset= ceil($pagination * $limit)-$limit;
+
+     if(isset($_GET['s'])){
+          $s=$_GET['s'];
+     }else{
+          $s="";
+     }
 ?>
      <div class="container mt-3">
           <?php if (isset($_GET['error'])) { ?>
@@ -57,6 +63,7 @@
                                                   
                                                   <label for="cateName" class="input-group-text">Category's name</label>
                                                   <input type="text" name="cateName" id="cateName" class="form-control" placeholder="Category's name">
+                                                  
                                              </div>
                                         </div>
                                         <!-- <div class="col">
@@ -93,21 +100,40 @@
           <!-- form show data from Database -->
           <div class="row g-3">
             <div class="col-md-12">
-                <div class=" mt-3 mb-2">
+                <div class=" mt-3 mb-1">
                     <div class="row g-6">
-                         <div class="col-md-10">
-                              <div class="input-group">
-                                   <label for="search" class="input-group-text">Search</label>
-                                   <input type="text" name="search" id="" class="form-control">
-                              </div>
+                         <div class="col-md-7">
+                              <form id="search_box">
+                                   <div class="input-group d-flex">
+                                        <label for="search" class="input-group-text">Search</label>
+                                        <input type="search" value="<?= $s; ?>" name="search" id="search_input" placeholder="Search by name ..." class="form-control me-2">
+                                        <button class="btn btn-primary">Search</button>
+                                   </div>
+                              </form>
+                             
+                              
+                         </div>
+                         <div class="col-md-3">
+                              <form id="search_box">
+                                   <div class="input-group" style="width: 155px;float:right;">
+                                        <label for="sortBy" class="input-group-text">Sort By</label>
+                                        <select class="form-select" id="page_sort">
+                                             <option style="display: none;" ><?php ?></option>
+                                             <option >New</option>
+                                             <option >Old</option>
+                                        </select>
+                                       
+                                   </div>
+                              </form>
+                             
                               
                          </div>
                          
                          <div class="col" >
-                              <div class="input-group">
-                                   <label for="search" class="input-group-text">Page/</label>
+                              <div class="input-group" style="width: 140px;float:right;" >
+                                   <label for="search"  class="input-group-text">Page/</label>
                                    <select class="form-select" id="page_limit">
-                                        <option ><?php echo $limit; ?></option>
+                                        <option style="display: none;" ><?php echo $limit; ?></option>
                                         <option >5</option>
                                         <option >15</option>
                                         <option >25</option>
@@ -139,8 +165,8 @@
                                    <th style="width: 440px;">Description</th>
                                    <th>Action</th>
                                    <?php
-                                        $sql="SELECT * FROM category LIMIT $limit OFFSET $offset";
-                                        $queryCount="SELECT * FROM category";
+                                        $sql="SELECT * FROM category WHERE LOWER(categoryName) LIKE LOWER('%$s%') LIMIT $limit OFFSET $offset";
+                                        $queryCount="SELECT * FROM category WHERE LOWER(categoryName) LIKE LOWER('%$s%')";
                                         $reCount=$conn->query($queryCount);
                                         $count=$reCount->rowCount();
                                         $countPage=ceil($count /$limit);
@@ -208,6 +234,19 @@
           const pageLilit=document.querySelector("#page_limit");
           pageLilit.addEventListener("change", function(e){
                const value=e.currentTarget.value;
-               window.location.href=`read.cate.php?limit=${value}&page=<?php echo $pagination; ?>`;
+               window.location.href=`read.cate.php?limit=${value}&page=0`;
           });
+
+          const searchBar=document.querySelector("#search_box");
+          const searchValue=searchBar.querySelector("#search_input");
+          searchBar.addEventListener("submit",function(e){
+               e.preventDefault();
+               window.location.href=`read.cate.php?limit=<?= $limit; ?>&page=0&s=${searchValue.value}`;
+
+          });
+          searchValue.addEventListener("input",function(e){
+               const value=e.currentTarget.value;
+               if(value.length===0) window.location.href=`read.cate.php?limit=<?= $limit; ?>&page=0&s=`;
+          });
+
      </script>
