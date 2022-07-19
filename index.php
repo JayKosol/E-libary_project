@@ -15,7 +15,7 @@
 			$stmt="SELECT username, `password` FROM user_account WHERE username='$uname'";
 			$query=$conn->query($stmt);
 			if($row=$query->fetch()){
-                echo $pw;
+                //echo $pw;
 				if(password_verify($pw,$row['password'])){
                    
 					header("Location: ./home.php");

@@ -1,7 +1,9 @@
 
 
 <?php 
-     
+     include_once './../Asset/dbconnection.php';
+     include_once './../Asset/boostrap.php';
+     include_once './../Users/function.php';
           
      if(isset($_GET['limit'])){
           $lim=$_GET['limit'];
@@ -29,7 +31,7 @@
      }else{
           $pagination=$page;
      }
-     $offset= ceil($pagination*$limit)-$limit;
+     $offset= ceil($pagination * $limit)-$limit;
 ?>
      <div class="container mt-3">
           <?php if (isset($_GET['error'])) { ?>
@@ -93,24 +95,23 @@
             <div class="col-md-12">
                 <div class=" mt-3 mb-2">
                     <div class="row g-6">
-                         <div class="col-md-8">
+                         <div class="col-md-10">
                               <div class="input-group">
                                    <label for="search" class="input-group-text">Search</label>
                                    <input type="text" name="search" id="" class="form-control">
                               </div>
                               
                          </div>
-                         <div class="col-md-2">
-                              <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                         </div>
+                         
                          <div class="col" >
                               <div class="input-group">
                                    <label for="search" class="input-group-text">Page/</label>
-                                   <select class="form-select" aria-label="Default select example">
-                                   
-                                        <option value="1">5</option>
-                                        <option value="2">15</option>
-                                        <option value="3">25</option>
+                                   <select class="form-select" id="page_limit">
+                                        <option ><?php echo $limit; ?></option>
+                                        <option >5</option>
+                                        <option >15</option>
+                                        <option >25</option>
+                                        <option >50</option>
                                    </select>
                               </div>
                               
@@ -203,3 +204,10 @@
         </div>
         
      </div>
+     <script>
+          const pageLilit=document.querySelector("#page_limit");
+          pageLilit.addEventListener("change", function(e){
+               const value=e.currentTarget.value;
+               window.location.href=`read.cate.php?limit=${value}&page=<?php echo $pagination; ?>`;
+          });
+     </script>

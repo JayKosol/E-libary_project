@@ -1,5 +1,5 @@
 
-     <div class="container">
+     <div class="container mt-3">
           <?php if (isset($_GET['error'])) { ?>
                <div class="alert alert-danger" role="alert">
                <?=htmlspecialchars($_GET['error'])?>
@@ -20,7 +20,7 @@
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                          <div class="accordion-body">
-                              <form action="./create_user.php" method="post">
+                              <form action="./users/create_user.php" method="post">
                                    <div class="row">
                                         <div class="col">
                                              <div class="input-group mb-2">

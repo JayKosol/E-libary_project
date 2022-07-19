@@ -1,5 +1,5 @@
 <?php
-     require_once "./../Asset/dbconnection.php";
+     require_once "./asset/dbconnection.php";
      include_once './function.php';
      $e_uType="";
      $alert="";
