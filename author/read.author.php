@@ -1,5 +1,58 @@
 
-<div class="container">
+
+<?php 
+     include_once './../Asset/dbconnection.php';
+     include_once './../Asset/boostrap.php';
+     include_once './../Users/function.php';
+          
+     if(isset($_GET['limit'])){
+          $lim=$_GET['limit'];
+     }else{
+         $lim=""; 
+     }
+     if($lim==0 || empty($lim)){
+          $limit=5;
+     }else{
+          $limit=$lim;
+     }
+     //echo $limit;
+     if(isset($_GET['page'])){
+          $pag=$_GET['page'];
+     }else{
+          $pag="";
+     }
+     if($pag==0 || empty($pag)){
+          $page=0;
+     }else{
+          $page=$pag;
+     }
+     if($page == 0){
+          $pagination=1;
+     }else{
+          $pagination=$page;
+     }
+     $offset= ceil($pagination * $limit)-$limit;
+
+     if(isset($_GET['s'])){
+          $s=$_GET['s'];
+     }else{
+          $s="";
+     }
+
+     if(isset($_GET['sortBy'])){
+          $sort=$_GET['sortBy'];
+     }else{
+          $sort="";
+     }
+     if(empty($sort)){
+          $sortBy='DESC';
+     }elseif($sort==='Old'){
+          $sortBy='ASC';
+     }else{
+          $sortBy='DESC';
+     }
+?>
+<div class="container mt-3">
           <?php if (isset($_GET['error'])) { ?>
                <div class="alert alert-danger" role="alert">
                <?=htmlspecialchars($_GET['error'])?>
@@ -56,11 +109,46 @@
           <!-- form show data from Database -->
           <div class="row">
             <div class="col-md-12">
-                <div class="input-group mb-3">
-                    <label for="search" class="input-group-text">Search</label>
-                    <input type="text" name="search" id="" class="form-control">
-                    
-                    
+               <div class=" mt-3 mb-1">
+                    <div class="row g-6">
+                         <div class="col-md-8">
+                              <form id="search_box">
+                                   <div class="input-group d-flex">
+                                        <label for="search" class="input-group-text">Search</label>
+                                        <input type="search" value="<?= $s; ?>" name="search" id="search_input" placeholder="Search by name ..." class="form-control me-2">
+                                        <button class="btn btn-primary">Search</button>
+                                   </div>
+                              </form>
+                             
+                              
+                         </div>
+                         <div class="col-md-2">
+                              
+                              <div class="input-group" style="width: 155px;float:right;">
+                                   <label for="sortBy" class="input-group-text">Sort By</label>
+                                   <select class="form-select" id="page_sort">
+                                        <option style="display: none;" ><?php echo $sort === ""?"New": $sort; ?></option>
+                                        <option >New</option>
+                                        <option >Old</option>
+                                   </select>
+                                   
+                              </div>
+                         </div>
+                         
+                         <div class="col" >
+                              <div class="input-group" style="width: 140px;float:right;" >
+                                   <label for="search"  class="input-group-text">Page/</label>
+                                   <select class="form-select" id="page_limit">
+                                        <option style="display: none;" ><?php echo $limit; ?></option>
+                                        <option >5</option>
+                                        <option >15</option>
+                                        <option >25</option>
+                                        <option >50</option>
+                                   </select>
+                              </div>
+                              
+                         </div>
+                    </div>
                 </div>
                <?php if (isset($_GET['alert'])) { ?>
                     <div class="alert alert-info" role="alert">
@@ -74,11 +162,16 @@
                     
                 <?php 
                
-                    $sql="SELECT * FROM authors";
+                    $sql="SELECT * FROM authors WHERE LOWER(authorName) LIKE LOWER('%$s%') ORDER BY authorId $sortBy LIMIT $limit OFFSET $offset";
+                    $queryCount="SELECT * FROM authors WHERE LOWER(authorName) LIKE LOWER('%$s%')";
+                    $reCount=$conn->query($queryCount);
+                    $count=$reCount->rowCount();
+                    $countPage=ceil($count /$limit);
+
                     $auth=$conn->query($sql);
 
                     if($auth->rowCount()>0){
-                        echo "<table class='table table-striped table-hover'>";
+                        echo "<table class='table table-striped table-hover table-bordered'>";
                         echo "<thead>";
                         echo "<tr>";
                             echo "<th>ID</th>";
@@ -126,15 +219,56 @@
                     }
 
                 ?>
-                    <div class="card-footer">
-                        <div class="mb-1 mt-1">
-                            <a href="">
-                                <!-- <label for="#new" class="text-info" style="font-szie: 20px;" >Create New Admin</label> -->
-                            </a>
-                            
-                        </div>
-                    </div>
+                    
                 </div>
+                <nav aria-label="Page navigation example ">
+                    <ul class="pagination justify-content-center mt-2">
+                         <li class="page-item <?php echo $pagination ==1 ? 'disabled':''; ?>">
+                              <a class="page-link" href="./read.author.php?limit=<?php echo $limit?>&page=<?php echo $pagination-1?>">Previous</a>
+                         </li>
+
+                         <?php
+                              for($i=1; $i<=$countPage;$i++){
+                                   ?>
+                                   <li class="page-item <?php echo $pagination ==$i ?'active':''; ?>"><a class="page-link"
+                                   href="./read.author.php?limit=<?php echo $limit?>&page=<?php echo $i;?>"><?php echo $i ?></a></li>
+                                   <?php
+                              }
+                         ?>
+                         
+                    
+                         
+                         <li class="page-item <?php echo $pagination >= $countPage ? 'disabled':''; ?>">
+                              <a class="page-link" href="./read.author.php?limit=<?php echo $limit?>&page=<?php echo $pagination+1?>">Next</a>
+                         </li>
+                    </ul>
+               </nav>
             </div>
         </div>
      </div>
+     <script>
+          const pageLilit=document.querySelector("#page_limit");
+          pageLilit.addEventListener("change", function(e){
+               const value=e.currentTarget.value;
+               window.location.href=`read.author.php?limit=${value}&page=0`;
+          });
+
+          const searchBar=document.querySelector("#search_box");
+          const searchValue=searchBar.querySelector("#search_input");
+          searchBar.addEventListener("submit",function(e){
+               e.preventDefault();
+               window.location.href=`read.author.php?limit=<?= $limit; ?>&page=0&s=${searchValue.value}&sortBy=<?= $sort ?>`;
+
+          });
+          searchValue.addEventListener("input",function(e){
+               const value=e.currentTarget.value;
+               if(value.length===0) window.location.href=`read.author.php?limit=<?= $limit; ?>&page=0&s=`;
+          });
+
+          const sortBy=document.querySelector("#page_sort");
+          sortBy.addEventListener("change",function(e){
+               const value=e.currentTarget.value;
+               window.location.href=`read.author.php?limit=<?= $limit; ?>&page=0&s=${searchValue.value}&sortBy=${value}`;
+          });
+
+     </script>

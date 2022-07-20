@@ -1,10 +1,11 @@
 <?php  
-     require_once './../Asset/dbconnection.php';
+     include_once './../Asset/dbconnection.php';
+     include_once './function.php';
      //get data from users to show
      if(isset($_GET['id'])&& !empty($_GET['id'])){
           $id=$_GET['id'];
           //echo $id;
-          $sql="SELECT * FROM user_account WHERE userId=:id";
+          $sql="SELECT * FROM user_account WHERE id=:id";
           $presql=$conn->prepare($sql);
           
           $presql->bindParam(":id",$pa_id);
@@ -29,7 +30,7 @@
           $id=$_POST['id'];
           $uType=$_POST['usertype'];
           $uname=$_POST['username'];
-          $pw=$_POST['password'];
+          $pw=password_hash($_POST['password'],PASSWORD_DEFAULT);
           $position=$_POST['position'];
           $cd=$_POST['createdate'];
           $desc=$_POST['description'];

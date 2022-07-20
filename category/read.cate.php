@@ -38,6 +38,19 @@
      }else{
           $s="";
      }
+
+     if(isset($_GET['sortBy'])){
+          $sort=$_GET['sortBy'];
+     }else{
+          $sort="";
+     }
+     if(empty($sort)){
+          $sortBy='DESC';
+     }elseif($sort==='Old'){
+          $sortBy='ASC';
+     }else{
+          $sortBy='DESC';
+     }
 ?>
      <div class="container mt-3">
           <?php if (isset($_GET['error'])) { ?>
@@ -114,19 +127,16 @@
                               
                          </div>
                          <div class="col-md-2">
-                              <form id="search_box">
-                                   <div class="input-group" style="width: 155px;float:right;">
-                                        <label for="sortBy" class="input-group-text">Sort By</label>
-                                        <select class="form-select" id="page_sort">
-                                             <option style="display: none;" ><?php ?></option>
-                                             <option >New</option>
-                                             <option >Old</option>
-                                        </select>
-                                       
-                                   </div>
-                              </form>
-                             
                               
+                              <div class="input-group" style="width: 155px;float:right;">
+                                   <label for="sortBy" class="input-group-text">Sort By</label>
+                                   <select class="form-select" id="page_sort">
+                                        <option style="display: none;" ><?php echo $sort === ""?"New": $sort; ?></option>
+                                        <option >New</option>
+                                        <option >Old</option>
+                                   </select>
+                                   
+                              </div>
                          </div>
                          
                          <div class="col" >
@@ -165,7 +175,7 @@
                                    <th style="width: 440px;">Description</th>
                                    <th>Action</th>
                                    <?php
-                                        $sql="SELECT * FROM category WHERE LOWER(categoryName) LIKE LOWER('%$s%') LIMIT $limit OFFSET $offset";
+                                        $sql="SELECT * FROM category WHERE LOWER(categoryName) LIKE LOWER('%$s%') ORDER BY categoryId $sortBy LIMIT $limit OFFSET $offset";
                                         $queryCount="SELECT * FROM category WHERE LOWER(categoryName) LIKE LOWER('%$s%')";
                                         $reCount=$conn->query($queryCount);
                                         $count=$reCount->rowCount();
@@ -207,7 +217,7 @@
             </div>
           <nav aria-label="Page navigation example ">
                <ul class="pagination justify-content-center mt-2">
-               <li class="page-item <?php echo $pagination ==1 ? 'disabled':''; ?>">
+                    <li class="page-item <?php echo $pagination ==1 ? 'disabled':''; ?>">
                          <a class="page-link" href="./read.cate.php?limit=<?php echo $limit?>&page=<?php echo $pagination-1?>">Previous</a>
                     </li>
 
@@ -227,7 +237,7 @@
                     </li>
                </ul>
           </nav>
-        </div>
+     </div>
         
      </div>
      <script>
@@ -241,12 +251,18 @@
           const searchValue=searchBar.querySelector("#search_input");
           searchBar.addEventListener("submit",function(e){
                e.preventDefault();
-               window.location.href=`read.cate.php?limit=<?= $limit; ?>&page=0&s=${searchValue.value}`;
+               window.location.href=`read.cate.php?limit=<?= $limit; ?>&page=0&s=${searchValue.value}&sortBy=<?= $sort ?>`;
 
           });
           searchValue.addEventListener("input",function(e){
                const value=e.currentTarget.value;
                if(value.length===0) window.location.href=`read.cate.php?limit=<?= $limit; ?>&page=0&s=`;
+          });
+
+          const sortBy=document.querySelector("#page_sort");
+          sortBy.addEventListener("change",function(e){
+               const value=e.currentTarget.value;
+               window.location.href=`read.cate.php?limit=<?= $limit; ?>&page=0&s=${searchValue.value}&sortBy=${value}`;
           });
 
      </script>

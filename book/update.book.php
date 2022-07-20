@@ -57,7 +57,7 @@
                     <div class="input-group mb-2">
                          <label for="author" class="input-group-text">Authors</label>
                          <select name="author" class="form-control" id="author">
-                              <option value="<?php echo $author; ?>"><?php echo $author; ?></option>
+                              <option style="display: none;" value="<?php echo $author; ?>"><?php echo $author; ?></option>
                               <?php echo fill_author($conn); ?>
                          </select>
                     </div>
@@ -66,6 +66,7 @@
                     <div class="input-group mb-2">
                          <label for="category" class="input-group-text">Category</label>
                          <select name="category" class="form-control" id="category">
+                              <option style="display: none;" value="<?= $category ?>"><?= $category ?></option>
                               <?php echo fill_category($conn); ?>
                          </select>
                     </div>
@@ -75,6 +76,7 @@
           <div class="input-group mb-2">
                <label for="language" class="input-group-text">Book's Language</label>
                <select name="language" class="form-control" id="language">
+                    <option style="display: none;" value="<?= $language ?>"><?= $language ?></option>
                     <?php echo languege_list(); ?>
                </select>
           </div>
@@ -86,6 +88,7 @@
           <div class="input-group mb-2">
                <label for="edition" class="input-group-text">Book's Edition</label>
                <select name="edition" class="form-control" id="edition">
+               <option style="display: none;" value="<?= $edition ?>"><?= $edition ?></option>
                     <?php echo edition_list(); ?>
                </select>
           </div>
@@ -108,6 +111,7 @@
                     <div class="input-group mb-3">
                          <label for="createby" class="input-group-text">Create By</label>
                          <select name="createby" class="form-control" id="createby">
+                              <option style="display: none;" value="<?= $create_by ?>"><?= $create_by ?></option>
                               <?php echo fill_user_acc($conn); ?>
                          </select>
                     </div>

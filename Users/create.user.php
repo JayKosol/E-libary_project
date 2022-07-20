@@ -1,8 +1,7 @@
 <?php
-     require_once "./asset/dbconnection.php";
+     include_once "./../Asset/dbconnection.php";
      include_once './function.php';
-     $e_uType="";
-     $alert="";
+
      if($_SERVER['REQUEST_METHOD']=="POST"){
           
           $uType=$_POST['usertype'];
