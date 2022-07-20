@@ -30,21 +30,21 @@
                         <!-- <i class='tool' ></i> -->
                   </li> 
                   <li class="tab is-active">
-                        <a href="#" data-switcher data-tab="1">
+                        <a href="./home.php" data-switcher data-tab="1">
                               <i class='bx bxs-dashboard i' ></i>
                               <span class="link_name">Dashboard</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li  class="tab">
-                        <a href="#" data-switcher data-tab="2">
+                        <a href="./category/read.cate.php" data-switcher data-tab="2">
                               <i class='bx bx-category i' ></i>
                               <span class="link_name">Category</span>
                         </a>
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li  class="tab">
-                        <a href="#" data-switcher data-tab="3">
+                        <a href="./author/read.author.php" data-switcher data-tab="3">
                               <i class='bx bxs-user-detail i' ></i>
                               <span class="link_name">Author</span>
                         </a>
