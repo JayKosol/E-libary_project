@@ -10,7 +10,7 @@
            include_once "./Users/function.php";
      ?>
      <link rel="stylesheet" href="./Asset/css/style.css">
-     <title>Home Page</title>
+     <title>Dashboard</title>
 </head>
 <body>
      <div class="sidebar">
@@ -51,7 +51,7 @@
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li  class="tab">
-                        <a href="#" data-switcher data-tab="4">
+                        <a href="./book/read.book.php" data-switcher data-tab="4">
                               <i class='bx bxs-book i' ></i>
                               <span class="link_name">Book</span>
                         </a>
@@ -65,7 +65,7 @@
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li  class="tab">
-                        <a href="#" data-switcher data-tab="6">
+                        <a href="./Users/read.admin.php" data-switcher data-tab="6">
                               <i class='bi bi-people-fill' ></i>
                               <span class="link_name">Users</span>
                         </a>
@@ -94,29 +94,7 @@
      
 
      <div id="home_content" class="pages">
-            <div class="page is-active" data-page="1">
-         
-                  <?php include "./Asset/dashboard.php" ?>
-            </div>
-            <div class="page" data-page="2">
-             
-                  <?php include_once "./category/read.cate.php" ?>
-            </div>
-            <div class="page" data-page="3">
-               
-                  <?php include_once "./author/read.author.php" ?>
-            </div>
-            <div class="page" data-page="4">
-                
-                  <?php include_once "./book/read.book.php" ?>
-            </div>
-            <div class="page" data-page="5">
-
-            </div>
-            <div class="page" data-page="6">
-                  
-                  <?php include_once "./Users/read.user.php" ?>
-            </div>
+            <?php include_once "./Asset/dashboard.php" ?>
      </div>
      <script src="./Asset/home.js"></script>
 </body>
