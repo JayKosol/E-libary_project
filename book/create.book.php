@@ -10,16 +10,15 @@
           $language=$_POST['language'];
           $year=$_POST['year']; 
           $edition=$_POST['edition']; 
-          $img="img/".basename($_FILES['photo']['name']);
-          move_uploaded_file($_FILES['photo']['tmp_name'],$img);
-          $photo=$img; 
-         
-          $desc=$_POST['desc'];
-          $create_date=$_POST['createdate'];
-          $create_by=$_POST['createby'];
-
-          
-          
+          $img="../img/".basename($_FILES['photo']['name']);
+          if(move_uploaded_file($_FILES['photo']['tmp_name'],$img)){
+               
+               echo $img;
+               $photo=$img; 
+               $desc=$_POST['desc'];
+               $create_date=$_POST['createdate'];
+               $create_by=$_POST['createby'];
+     
           if(empty($btitle)){
                header("Location:./read.book.php?error=Book's title is required");
           }
@@ -57,5 +56,6 @@
                }else{
                     header("Location:./read.book.php?alert=Connot create new record!");
                }
+          }
           }
      }
