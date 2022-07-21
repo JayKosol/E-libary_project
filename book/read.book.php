@@ -69,7 +69,7 @@
                     </h2>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                          <div class="accordion-body">
-                              <form action="./create.book.php" method="post">
+                              <form action="./create.book.php" method="post" enctype="multipart/form-data">
                                    <div class="row">
                                         <div class="col">
                                              <div class="input-group mb-2">
@@ -225,7 +225,8 @@
                                    <th>CreateBy</th>
                                    <th style="width: 110px;">Action</th>
                                    <?php
-                                        $sql="SELECT * FROM books WHERE LOWER(bookTitle) LIKE LOWER('%$s%') ORDER BY bookId $sortBy LIMIT $limit OFFSET $offset";
+                                        $sql="SELECT b.*,a.authorName,c.categoryName FROM books b INNER JOIN authors a ON b.authorsId=a.authorId INNER JOIN category c ON b.categoryId=c.categoryId  
+                                        WHERE LOWER(bookTitle) LIKE LOWER('%$s%') ORDER BY bookId $sortBy LIMIT $limit OFFSET $offset";
                                         $queryCount="SELECT * FROM books WHERE LOWER(bookTitle) LIKE LOWER('%$s%')";
                                         $reCount=$conn->query($queryCount);
                                         $count=$reCount->rowCount();
@@ -242,12 +243,14 @@
                                              <td><?php echo $book['bookId']; ?></td>
                                              <td><?php echo $book['bookTitle']; ?></td>
                                              <td><?php echo $book['isbn']; ?></td>
-                                             <td><?php echo $book['authorsId']; ?></td>
-                                             <td><?php echo $book['categoryId']; ?></td>
+                                             <td><?php echo $book['authorName']; ?></td>
+                                             <td><?php echo $book['categoryName']; ?></td>
                                              <td><?php echo $book['languages']; ?></td>
                                              <td><?php echo $book['releaseYear']; ?></td>
                                              <td><?php echo $book['bookEdition']; ?></td>
-                                             <td style="width: 55px;height:70px;"><?php echo $book['photos']; ?></td>
+                                             <td>
+                                                 <img style="width: 55px;height:70px;" src="<?php echo $book['photos']; ?>" />
+                                             </td>
                                              <td><?php echo $book['createDate']; ?></td>
                                              <td><?php echo $book['createBy']; ?></td>
                                              <td style="display: flex;" >
