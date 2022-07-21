@@ -223,7 +223,7 @@
                                    <th>Image</th>
                                    <th>CreateDate</th>
                                    <th>CreateBy</th>
-                                   <th style="width: 100px;">Action</th>
+                                   <th style="width: 110px;">Action</th>
                                    <?php
                                         $sql="SELECT * FROM books WHERE LOWER(bookTitle) LIKE LOWER('%$s%') ORDER BY bookId $sortBy LIMIT $limit OFFSET $offset";
                                         $queryCount="SELECT * FROM books WHERE LOWER(bookTitle) LIKE LOWER('%$s%')";
@@ -250,11 +250,19 @@
                                              <td style="width: 55px;height:70px;"><?php echo $book['photos']; ?></td>
                                              <td><?php echo $book['createDate']; ?></td>
                                              <td><?php echo $book['createBy']; ?></td>
-                                             <td  >
-                                                  <a onclick="return confirm('Do want to delete this record?')" href="./delete.book.php?id=<?php echo $book['bookId'];?>" class="bi bi-trash"></a>
-                                                  <?php echo " | " ?>
-                                                  <a  href="./update.book.php?id=<?php echo $book['bookId'];?>" class="bi bi-file-earmark-medical"></a>
-                                                  <?php echo " | " ?>
+                                             <td style="display: flex;" >
+                                                  <form action="./delete.book.php" method="post">
+                                                       <input type="hidden" name="id" value="<?php echo $book['bookId'];?>">
+                                                       
+                                                       <button type="submit" style="color: blue;border:none;" onclick="return confirm('Do want to delete this record?')">
+                                                       <i  class="bi bi-trash" ></i>
+                                                       </button>
+                                                       
+                                                  </form>
+                                                  
+                                                  <?php echo " " ?>
+                                                  <a style="padding-right: 10px;" href="./update.book.php?id=<?php echo $book['bookId'];?>" class="bi bi-file-earmark-medical"></a>
+                                                  <?php echo " " ?>
                                                   <a  href="./detail.book.php?id=<?php echo $book['bookId'];?>" class="bi bi-card-text"></a>
                                              </td>
 
