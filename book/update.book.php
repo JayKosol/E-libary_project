@@ -4,7 +4,7 @@
      include_once './../Users/function.php';
      if(isset($_GET['id']) && !empty($_GET['id'])){
           $id=$_GET['id'];
-          $sql="SELECT * FROM books WHERE bookId=:id";
+          $sql="SELECT b.*,a.authorName,c.categoryName FROM books b INNER JOIN authors a ON b.authorsId=a.authorId INNER JOIN category c ON b.categoryId=c.categoryId WHERE bookId=:id";
           $stm=$conn->prepare($sql);
           $stm->bindParam("id",$p_id);
           $p_id=$id;
@@ -13,8 +13,8 @@
                     $re=$stm->fetch();
                     $btitle=$re['bookTitle'];
                     $isbn=$re['isbn'];
-                    $author=$re['authorsId'];
-                    $category=$re['categoryId'];
+                    $author=$re['authorName'];
+                    $category=$re['categoryName'];
                     $language=$re['languages'];
                     $year=$re['releaseYear'];
                     $edition=$re['bookEdition']; 
