@@ -1,3 +1,80 @@
+
+<?php
+     include_once "../Asset/dbconnection.php";
+     if(isset($_GET['id']) && !empty($_GET['id'])){
+          $id=$_GET['id'];
+          $sql="SELECT b.*,a.authorName,c.categoryName FROM books b INNER JOIN authors a ON b.authorsId=a.authorId INNER JOIN category c ON b.categoryId=c.categoryId WHERE bookId=:id";
+          $stm=$conn->prepare($sql);
+          $stm->bindParam("id",$p_id);
+          $p_id=$id;
+          if($stm->execute()){
+               if($stm->rowCount()==1){
+                    $re=$stm->fetch();
+                    $btitle=$re['bookTitle'];
+                    $isbn=$re['isbn'];
+                    $author=$re['authorName'];
+                    $category=$re['categoryName'];
+                    $language=$re['languages'];
+                    $year=$re['releaseYear'];
+                    $edition=$re['bookEdition']; 
+                    $photo =$re['photos'];
+               
+                    $desc=$re['desc'];
+                    $create_date=$re['createDate'];
+                    $create_by=$re['createBy'];
+                    $id=$re['bookId'];
+               }else{
+                    echo "Not found!";
+               }
+          }else{
+               echo "Error";
+          }
+          
+
+     }
+     if(isset($_POST['id']) && !empty($_POST['id'])){
+          $query="UPDATE books SET bookTitle=:title, isbn=:isbn, authorsId=:author,categoryId=:category,
+          languages=:lang, releaseYear=:year, bookEdition=:edition, photos=:photo, `desc`=:desc, createDate=:cDate, createBy=:cBy WHERE bookId=:id";
+          $stm=$conn->prepare($query);
+
+          $btitle=$_POST['booktitle'];
+          $isbn=$_POST['isbn'];
+          $author=$_POST['author'];
+          $category=$_POST['category'];
+          $language=$_POST['language'];
+          $year=$_POST['year'];
+          $edition=$_POST['edition']; 
+          
+     
+          $desc=$_POST['desc'];
+          $create_date=$_POST['createdate'];
+          $create_by=$_POST['createby'];
+          $id=$_POST['id'];
+
+           $stm->bindParam("title",$btitle);
+           $stm->bindParam("isbn",$isbn);
+           $stm->bindParam("author",$author);
+           $stm->bindParam("category",$category);
+           $stm->bindParam("lang",$language);
+           $stm->bindParam("year",$year);
+           $stm->bindParam("edition",$edition);
+           $stm->bindParam("photo",$photo);
+           $stm->bindParam("desc",$desc);
+           $stm->bindParam("cDate",$create_date);
+           $stm->bindParam("cBy",$create_by);
+           $stm->bindParam("id",$id);
+           
+           $dest = "../img/".basename($_FILES['photo']['name']);
+           
+          if (move_uploaded_file($_FILES['photo']['tmp_name'], $dest)) {
+               $photo=$dest;
+               if ($stmt->execute()) {
+                    header("Location:./read.cate.php?alert=One record has been update!");
+                    exit;
+               }
+          }
+     }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +82,7 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <?php include_once "../Asset/boostrap.php";
-           include_once "../Asset/dbconnection.php";
+          
            include_once "../Asset/font.php";
            include_once "../Users/function.php";
      ?>
@@ -94,45 +171,13 @@
      
 
      <div id="home_content" class="pages">
-     <?php 
-     if(isset($_GET['id']) && !empty($_GET['id'])){
-          $id=$_GET['id'];
-          $sql="SELECT b.*,a.authorName,c.categoryName FROM books b INNER JOIN authors a ON b.authorsId=a.authorId INNER JOIN category c ON b.categoryId=c.categoryId WHERE bookId=:id";
-          $stm=$conn->prepare($sql);
-          $stm->bindParam("id",$p_id);
-          $p_id=$id;
-          if($stm->execute()){
-               if($stm->rowCount()==1){
-                    $re=$stm->fetch();
-                    $btitle=$re['bookTitle'];
-                    $isbn=$re['isbn'];
-                    $author=$re['authorName'];
-                    $category=$re['categoryName'];
-                    $language=$re['languages'];
-                    $year=$re['releaseYear'];
-                    $edition=$re['bookEdition']; 
-                    $photo =$re['photos'];
-               
-                    $desc=$re['desc'];
-                    $create_date=$re['createDate'];
-                    $create_by=$re['createBy'];
-                    $id=$re['bookId'];
-               }else{
-                    echo "Not found!";
-               }
-          }else{
-               echo "Error";
-          }
-          
 
-     }
-
-?>
 <div class="container mt-4">
-     <form action="./create.book.php" method="post">
+     <form action="" method="post">
           <div class="row">
                <div class="col">
                     <div class="input-group mb-2">
+                         <input type="hidden" name="id" value="<?=  $id?>">
                          <input type="hidden" name="id" value="<?php echo $id; ?>">
                          <label for="booktitle" class="input-group-text">Book's Title</label>
                          <input type="text" value="<?php echo $btitle; ?>" name="booktitle" id="booktitle" class="form-control" placeholder="Title ...">
@@ -175,7 +220,7 @@
           </div>
           <div class="input-group mb-2">
                <label for="year" class="input-group-text">Release Year</label>
-               <input type="number" name="year" id="year" class="form-control" placeholder="Year ...">
+               <input type="number" value="<?= $year ?>" name="year" id="year" class="form-control" placeholder="Year ...">
           </div>
           
           <div class="input-group mb-2">
@@ -187,17 +232,17 @@
           </div>
           <div class="input-group mb-2">
                <label for="photo" class="input-group-text">Book Image</label>
-               <input type="file" name="photo" id="photo" class="form-control" placeholder="Upload image ...">
+               <input type="file" value="<?= $photo ?>" name="photo" id="photo" class="form-control" placeholder="Upload image ...">
           </div>
           <div class="input-group mb-2">
                <label for="desc" class="input-group-text">Description</label>
-               <textarea name="desc" style="height: 70px;" class="form-control" id="desc" cols="30" rows="10"></textarea>
+               <textarea name="desc" style="height: 70px;" class="form-control" id="desc" cols="30" rows="10"><?= $desc ?></textarea>
           </div>
           <div class="row">
                <div class="col">
                     <div class="input-group mb-2">
                          <label for="createdate" class="input-group-text">Create Date</label>
-                         <input type="date" name="createdate" id="createdate" class="form-control" placeholder="Date ...">
+                         <input type="date" value="<?= $create_date ?>" name="createdate" id="createdate" class="form-control" placeholder="Date ...">
                     </div>
                </div>
                <div class="col">
