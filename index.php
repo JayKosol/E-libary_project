@@ -1,35 +1,4 @@
-<?php 
 
-	include_once './Asset/dbconnection.php';
-
-	if($_SERVER['REQUEST_METHOD']=="POST"){
-		
-		$uname = $_POST['username'];
-		$pw =$_POST['password'] ;
-        
-		if (empty($uname)) {
-			header("Location: ./index.php?error=Username is required");
-		}elseif (empty($pw)){
-			header("Location: ./index.php?error=Password is required");
-		}else {
-			$stmt="SELECT username, `password` FROM user_account WHERE username='$uname'";
-			$query=$conn->query($stmt);
-			if($row=$query->fetch()){
-                //echo $pw;
-				if(password_verify($pw,$row['password'])){
-                   
-					header("Location: ./home.php");
-					exit;
-				}else {
-					header("Location: ./index.php?error=Incorrect password!");
-				}
-			}
-			else {
-				header("Location: ./index.php?error=Incorrect Username or Password!");
-			}
-		}
-	}
-?>
 
 
 <!DOCTYPE html>
@@ -39,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include_once "./Asset/boostrap.php" ;
-            ?>
-    <?php require_once "./Asset/font.php" ?>
+          include_once './Asset/dbconnection.php';  
+          require_once "./Asset/font.php" ?>
     <title>Login</title>
     <style>
         .gradient-custom-2 {
@@ -67,10 +36,50 @@
         }
     </style>
 </head>
-<body class="vh-90" style="background-color: #eee;">
+<body class="vh-70" style="background-color: #eee;">
+<?php 
+
+	
+
+	if($_SERVER['REQUEST_METHOD']=="POST"){
+		
+		$uname = $_POST['username'];
+		$pw =$_POST['password'] ;
+        
+        // echo $pw;
+		if (empty($uname)) {
+			header("Location: ./index.php?error=Username is required");
+		}elseif (empty($pw)){
+			header("Location: ./index.php?error=Password is required");
+		}else {
+			$stmt="SELECT username, `password` FROM user_account WHERE username='$uname'";
+			$query=$conn->query($stmt);
+            // $row=$query->fetch();
+            // echo "<pre>";
+            // print_r($row);
+            // echo $pw;
+            // echo "</pre>";
+			if($row=$query->fetch()){
+                // echo "<pre>";
+                // echo $pw;
+                // echo "</pre>";
+				if(password_verify($pw,$row['password'])){
+                   
+					header("Location: ./home.php");
+					exit;
+				}else {
+					header("Location: ./index.php?error=Incorrect password!");
+				}
+			}
+			else {
+				header("Location: ./index.php?error=Incorrect Username or Password!");
+			}
+		}
+	}
+?>
     <section >
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="container py-5 h-80">
+            <div class="row d-flex justify-content-center align-items-center h-80">
                 <div class="col-xl-10">
                     <div class="card rounded-3 text-black">
                         <div class="row">
@@ -98,7 +107,7 @@
                                         <?php } ?>
                                     </div>
                                     <!-- @form -->
-                                    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
+                                    <form action="" method="POST">
                                         <div class="row">
                                             <p>Please login to your account</p>
 
