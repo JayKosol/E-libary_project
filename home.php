@@ -88,11 +88,37 @@
             </div>
             </nav>   
 
-            <div class="block-content">
-                  <div class="container">
-
+            <div class="block-content row mt-3">
+                  <div class="card-block col-lg-6 col-md-8 col-sm-12  ">
+                        <div class="my-card rounded shadow">
+                              <div class="card-member">
+                                    <div class="logo p-1"><img src="https://via.placeholder.com/32x32" alt=""></div>
+                                    <div class="block-text">dfhjskafjdslajfklsf</div>
+                              </div>
+                              <div class="card-member p-1">Footer</div>
+                        </div>
+                  </div>
+                  <div class="card-block col-lg-6 col-md-8 col-sm-12 ">
+                        <div class="my-card rounded shadow">
+                              <div class="card-member">
+                                    <div class="logo p-1"><img src="https://via.placeholder.com/32x32" alt=""></div>
+                                    <div class="block-text">dfhjskafjdslajfklsf</div>
+                              </div>
+                              <div class="card-member p-1">Footer</div>
+                        </div>
+                  </div>
+                  <div class="card-block col-lg-6 col-md-8 col-sm-12 ">
+                        <div class="my-card rounded shadow">
+                              <div class="card-member">
+                                    <div class="logo p-1"><img src="https://via.placeholder.com/32x32" alt=""></div>
+                                    <div class="block-text">dfhjskafjdslajfklsf</div>
+                              </div>
+                              <div class="card-member p-1">Footer</div>
+                        </div>
                   </div>
             </div>
+
+            
      </div>
      <script src="./Asset/home.js"></script>
 </body>
