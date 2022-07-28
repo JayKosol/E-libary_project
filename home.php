@@ -1,6 +1,3 @@
-<?php 
-      include_once './alloweAccess.php';
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +66,7 @@
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li  class="tab">
-                        <a href="./Users/read.admin.php" data-switcher data-tab="6">
+                        <a href="./Users/read.user.php" data-switcher data-tab="6">
                               <i class='bi bi-people-fill' ></i>
                               <span class="link_name">Users</span>
                         </a>

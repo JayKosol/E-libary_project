@@ -65,7 +65,7 @@
                         <!-- <i class='tool' ></i> -->
                   </li>
                   <li  class="tab">
-                        <a href="../Users/read.admin.php" data-switcher data-tab="6">
+                        <a href="../Users/read.user.php" data-switcher data-tab="6">
                               <i class='bi bi-people-fill' ></i>
                               <span class="link_name">Users</span>
                         </a>
@@ -74,7 +74,7 @@
             </ul>
 
             <!-- @profile -->
-            <div class="profile-content">
+            <!-- <div class="profile-content">
                   <div class="profile">
                         <img src="../img/default.png" alt="">
                         <div class="profile-detail">
@@ -89,7 +89,7 @@
                               
                         </div>
                   </div>
-            </div>
+            </div> -->
      </div>
      
 
