@@ -1,6 +1,6 @@
-
-
-
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +38,6 @@
 </head>
 <body class="vh-70" style="background-color: #eee;">
 <?php 
-
-	
-
 	if($_SERVER['REQUEST_METHOD']=="POST"){
 		
 		$uname = $_POST['username'];
@@ -52,28 +49,50 @@
 		}elseif (empty($pw)){
 			header("Location: ./index.php?error=Password is required");
 		}else {
-			$stmt="SELECT username, `password` FROM user_account WHERE username='$uname'";
-			$query=$conn->query($stmt);
+			$stmt="SELECT `password`,username FROM user_account WHERE username=? LIMIT 1;";
+			if($query=$conn->prepare($stmt)){
+                $query->bindValue(1,$uname);
+                $query->execute();
+                if($query->rowCount()>0){
+                    $row=$query->fetch();
+                //   echo $row['password'];
+                //   var_dump(password_verify("123",$row['password']));
+                    if(password_verify($pw,$row['password'])){
+                        if(isset($_POST['remember'])){
+                            $remember=compact('username','password');
+                            setcookie   ('logincookie',serialize($remember),time()+(30*24*3600));
+
+                        }
+                        $_SESSION['username']=$uname;
+                        header("Location: ./home.php");
+                        exit;
+                    }else{
+                        header("Location: ./index.php?error=Incorrect password!");
+                    }
+                }else{
+                    header("Location: ./index.php?error=Incorrect Username or Password!");
+                }
+            }
+
             // $row=$query->fetch();
             // echo "<pre>";
             // print_r($row);
             // echo $pw;
             // echo "</pre>";
-			if($row=$query->fetch()){
-                // echo "<pre>";
-                // echo $pw;
-                // echo "</pre>";
-				if(password_verify($pw,$row['password'])){
-                   
-					header("Location: ./home.php");
-					exit;
-				}else {
-					header("Location: ./index.php?error=Incorrect password!");
-				}
-			}
-			else {
-				header("Location: ./index.php?error=Incorrect Username or Password!");
-			}
+			// if($row=$query->fetch()){
+            //     // echo "<pre>";
+            //     // echo $pw;
+            //     // echo "</pre>";
+			// 	if(password_verify($pw,$row['password'])){
+			// 		header("Location: ./home.php");
+			// 		exit;
+			// 	}else {
+			// 		header("Location: ./index.php?error=Incorrect password!");
+			// 	}
+			// }
+			// else {
+			// 	header("Location: ./index.php?error=Incorrect Username or Password!");
+			// }
 		}
 	}
 ?>
@@ -121,7 +140,13 @@
 
                                             <div class="col-12">
                                                 <label for="password">Password</label>
-                                                <input type="password" name="password" id="password" class="form-control mb-4" placeholder="Enter your password">
+                                                <input type="password" name="password" id="password" class="form-control mb-2" placeholder="Enter your password">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-check form-check-inline">
+                                                    <label for="remember">Remember Me</label>
+                                                    <input type="checkbox" name="remember" id="remember" class="form-check-input mb-3">
+                                                </div>
                                             </div>
 
                                             <div class="text-center pt-1 mb-5 pb-1">
