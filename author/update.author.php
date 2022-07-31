@@ -94,8 +94,13 @@
      
 
      <div id="home_content" class="pages">
+     <nav class="navbar navbar-expand-lg bg-light" >
+            <div class="container-fluid" >
+                  <a class="navbar-brand" href="#">Update Author</a>
+            </div>
+      </nav> 
      <?php
-
+      
      if(isset($_GET['id'])&& !empty($_GET['id'])){
           $id=$_GET['id'];
           //echo $id;
@@ -157,11 +162,8 @@
      // }
 ?>
 
-<div class="container">
-     <div class="mb-2">
-          <h4>Update Author</h4>
-     </div>
-<form action="" method="post">
+<div class="container-fluid">
+<form action="" method="post" class="mt-2">
      <div class="row">
           <div class="col">
                <div class="input-group mb-2">

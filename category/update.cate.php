@@ -94,6 +94,11 @@
      
 
      <div id="home_content" class="pages">
+     <nav class="navbar navbar-expand-lg bg-light" >
+            <div class="container-fluid" >
+                  <a class="navbar-brand" href="#">Category</a>
+            </div>
+            </nav> 
      <?php 
      require_once './../Asset/dbconnection.php';
      if(isset($_GET['id']) && !empty($_GET['id'])){
@@ -148,7 +153,7 @@
      }
 ?>
 
-     <div class="container mt-3">
+     <div class="container-fluid mt-3">
           <div class="mb-3">
                <h4>Update Category</h4>
           </div>

@@ -94,6 +94,11 @@
      
 
      <div id="home_content" class="pages">
+     <nav class="navbar navbar-expand-lg bg-light" >
+            <div class="container-fluid" >
+                  <a class="navbar-brand" href="#">Category</a>
+            </div>
+            </nav> 
      <?php 
      if(isset($_GET['limit'])){
           $lim=$_GET['limit'];
@@ -142,7 +147,7 @@
           $sortBy='DESC';
      }
 ?>
-     <div class="container mt-3">
+     <div class="container-fluid mt-3">
           <?php if (isset($_GET['error'])) { ?>
                     <div class="alert alert-danger" role="alert">
                     <?=htmlspecialchars($_GET['error'])?>

@@ -94,6 +94,11 @@
      
 
      <div id="home_content" class="pages">
+          <nav class="navbar navbar-expand-lg bg-light" >
+            <div class="container-fluid" >
+                  <a class="navbar-brand" href="#">Authors</a>
+            </div>
+          </nav> 
      <?php 
           
      if(isset($_GET['limit'])){
@@ -143,7 +148,7 @@
           $sortBy='DESC';
      }
 ?>
-<div class="container mt-3">
+<div class="container-fluid mt-3 ">
           <?php if (isset($_GET['error'])) { ?>
                <div class="alert alert-danger" role="alert">
                <?=htmlspecialchars($_GET['error'])?>
@@ -151,7 +156,7 @@
           <?php } ?>
           
           <!-- pop menu create new users -->
-          <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion accordion-flush" id="accordionFlushExample" >
                <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
                          <button id="new" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" >

@@ -96,7 +96,12 @@
                   </div>
             </div> -->
      </div>
-     <div id="home_content" class="pages" style="background-color: #DFFFFF;">
+     <div id="home_content" class="pages">
+     <nav class="navbar navbar-expand-lg bg-light" >
+            <div class="container-fluid" >
+                  <a class="navbar-brand" href="#">Users</a>
+            </div>
+            </nav> 
      <?php 
      // include_once './../Asset/dbconnection.php';
      // include_once './../Asset/boostrap.php';
@@ -149,7 +154,7 @@
           $sortBy='DESC';
      }
 ?>
-     <div class="container mt-3">
+     <div class="container-fluid mt-3">
           <?php if (isset($_GET['error'])) { ?>
                <div class="alert alert-danger" role="alert">
                <?=htmlspecialchars($_GET['error'])?>

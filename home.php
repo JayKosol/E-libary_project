@@ -77,42 +77,192 @@
             
      </div>
      
-
-     <div id="home_content" class="pages" style="background-color: #DFFFFF;">
+     <!-- style="background-color: #DFFFFF;" -->
+     <div id="home_content" class="pages" >
             <nav class="navbar navbar-expand-lg bg-light" >
             <div class="container-fluid" >
                   <a class="navbar-brand" href="#">Dashboard</a>
             </div>
             </nav>   
 
-            <div class="block-content row mt-3">
-                  <div class="card-block col-lg-6 col-md-8 col-sm-12  ">
-                        <div class="my-card rounded shadow">
-                              <div class="card-member">
-                                    <div class="logo p-1"><img src="https://via.placeholder.com/32x32" alt=""></div>
-                                    <div class="block-text">dfhjskafjdslajfklsf</div>
+            <div class="container-fluid">
+                  <div class="block-content row mt-3">
+                  <!-- @card-box -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                              <div class="card border-left-primary shadow h-100 py-2">
+                                    <div class="card-body">
+                                          <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                            Book Capacity</div>
+                                                      <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    </div>
                               </div>
-                              <div class="card-member p-1">Footer</div>
+                  <!-- @card-box -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                          <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                      <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                  Book Category</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                                                      </div>
+                                                      <div class="col-auto">
+                                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
                         </div>
-                  </div>
-                  <div class="card-block col-lg-6 col-md-8 col-sm-12 ">
-                        <div class="my-card rounded shadow">
-                              <div class="card-member">
-                                    <div class="logo p-1"><img src="https://via.placeholder.com/32x32" alt=""></div>
-                                    <div class="block-text">dfhjskafjdslajfklsf</div>
-                              </div>
-                              <div class="card-member p-1">Footer</div>
+                  <!-- @card-box -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                          <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                      <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                  Reader</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">100,00</div>
+                                                      </div>
+                                                      <div class="col-auto">
+                                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
                         </div>
-                  </div>
-                  <div class="card-block col-lg-6 col-md-8 col-sm-12 ">
-                        <div class="my-card rounded shadow">
-                              <div class="card-member">
-                                    <div class="logo p-1"><img src="https://via.placeholder.com/32x32" alt=""></div>
-                                    <div class="block-text">dfhjskafjdslajfklsf</div>
-                              </div>
-                              <div class="card-member p-1">Footer</div>
+                  <!-- @card-box -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                          <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                      <div class="col mr-2">
+                                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                                  Author</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">40,000</div>
+                                                      </div>
+                                                      <div class="col-auto">
+                                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
                         </div>
+
                   </div>
+
+                  <!-- @table-bookcontent -->
+                  <div class="table-book">
+                        <h3>Book</h3>
+                        <table class="table border bg-light shadow">
+                              <thead class="table-dark">
+                                    <tr>
+                                          <th scope="col">ID</th>
+                                          <th scope="col">Book Title</th>
+                                          <th scope="col">Category</th>
+                                          <th scope="col">Authors</th>
+                                    </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">4</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">5</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">6</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                              </tr>
+                              </tbody>
+                        </table>
+                  </div>
+                  <!-- @table-Author -->
+                  <div class="table-author">
+                        <h3>Author</h3>
+                        <table class="table border bg-light shadow">
+                              <thead class="table-dark">
+                                    <tr>
+                                          <th scope="col">ID</th>
+                                          <th scope="col">Author Name</th>
+                                          <th scope="col">Category</th>
+                                          <th scope="col">Authors</th>
+                                    </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">4</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">5</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">6</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                              </tr>
+                              </tbody>
+                        </table>
+                  </div>
+
             </div>
 
             

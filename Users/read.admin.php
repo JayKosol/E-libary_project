@@ -94,6 +94,11 @@
      
 
      <div id="home_content" class="pages">
+     <nav class="navbar navbar-expand-lg bg-light" >
+            <div class="container-fluid" >
+                  <a class="navbar-brand" href="#">Admin</a>
+            </div>
+            </nav> 
      <div class="container">
           <?php if (isset($_GET['error'])) { ?>
                <div class="alert alert-danger" role="alert">

@@ -171,8 +171,13 @@
      
 
      <div id="home_content" class="pages">
+     <nav class="navbar navbar-expand-lg bg-light" >
+            <div class="container-fluid" >
+                  <a class="navbar-brand" href="#">Update Book</a>
+            </div>
+            </nav> 
 
-<div class="container mt-4">
+<div class="container-fluid mt-4">
      <form action="" method="post">
           <div class="row">
                <div class="col">

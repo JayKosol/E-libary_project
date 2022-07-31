@@ -160,14 +160,16 @@
                   </div>
             </div> -->
      </div>
-     <div id="home_content" class="pages" style="background-color: #DFFFFF;">
-          <div class="container">
+     <div id="home_content" class="pages">
+     <nav class="navbar navbar-expand-lg bg-light" >
+            <div class="container-fluid" >
+                  <a class="navbar-brand" href="#">Update Users</a>
+            </div>
+            </nav> 
+          <div class="container-fluid">
                <div class="row">
                     <div class="col-md-12">
                          <form action="" method="post">
-                              <div class="mb-2">
-                                   <h4>Update Users</h4>
-                              </div>
                               <div class="mb-2">
                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
                                    <label for="usertype" class="form-label">User Types</label>

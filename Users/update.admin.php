@@ -94,6 +94,11 @@
      
 
      <div id="home_content" class="pages">
+     <nav class="navbar navbar-expand-lg bg-light" >
+            <div class="container-fluid" >
+                  <a class="navbar-brand" href="#">Update Admin</a>
+            </div>
+            </nav> 
      <?php  
      //get data from users to show
      if(isset($_GET['id'])&& !empty($_GET['id'])){
