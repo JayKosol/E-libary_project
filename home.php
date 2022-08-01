@@ -95,7 +95,7 @@
                                                 <div class="col mr-2">
                                                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                             Book Capacity</div>
-                                                      <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                                                      <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo total_book($conn) ?></div>
                                                 </div>
                                                 <div class="col-auto">
                                                       <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -112,7 +112,7 @@
                                                       <div class="col mr-2">
                                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                                   Book Category</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo total_category($conn) ?></div>
                                                       </div>
                                                       <div class="col-auto">
                                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -146,7 +146,7 @@
                                                       <div class="col mr-2">
                                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                                   Author</div>
-                                                            <div class="h5 mb-0 font-weight-bold text-gray-800">40,000</div>
+                                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo total_author($conn) ?></div>
                                                       </div>
                                                       <div class="col-auto">
                                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -161,51 +161,43 @@
                   <!-- @table-bookcontent -->
                   <div class="table-book">
                         <h3>Book</h3>
-                        <table class="table border bg-light shadow">
+                        <table class="table table-bordered bg-light shadow">
                               <thead class="table-dark">
                                     <tr>
                                           <th scope="col">ID</th>
                                           <th scope="col">Book Title</th>
                                           <th scope="col">Category</th>
                                           <th scope="col">Authors</th>
+                                          <th scope="col">Language</th>
+                                          <th scope="col">Image</th>
+                                          <?php
+                                                $sql="SELECT b.*,a.authorName,c.categoryName FROM books b INNER JOIN authors a ON b.authorsId=a.authorId INNER JOIN category c ON b.categoryId=c.categoryId ORDER BY bookId DESC";
+
+                                                $stm=$conn->query($sql);
+                                                if($stm->rowCount()>0){
+                                                      while($book=$stm->fetch()):    
+                                          ?>
                                     </tr>
                               </thead>
                               <tbody>
                               <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                              </tr>
-                              <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                              </tr>
-                              <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                              </tr>
-                              <tr>
-                                    <th scope="row">4</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                              </tr>
-                              <tr>
-                                    <th scope="row">5</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                              </tr>
-                              <tr>
-                                    <th scope="row">6</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
+
+                                    <td><?= $book['bookId']  ?></td>
+                                    <td><?= $book['bookTitle']  ?></td>
+                                    <td><?= $book['categoryName']  ?></td>
+                                    <td><?= $book['authorName']  ?></td>
+                                    <td><?= $book['languages']  ?></td>
+                                    <td>
+                                          <img style="width: 50px;height:60px;" src="<?= $book['photos']; ?>" />
+                                          
+                                    </td>
+                                    <?php 
+                                             endwhile;
+                                        }
+                                        else{
+                                             echo "Not found datas!";
+                                        }
+                                    ?>
                               </tr>
                               </tbody>
                         </table>

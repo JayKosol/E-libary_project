@@ -71,14 +71,12 @@ function fill_category($connect)
 }
 
 //count book number
+//WHERE book_status = 'Enable'
 function total_book($connect)
 {
 	$total = 0;
 
-	$query = "
-	SELECT COUNT(book_id) AS Total FROM lms_book 
-	WHERE book_status = 'Enable'
-	";
+	$query = "SELECT COUNT(bookId) AS Total FROM books ";
 
 	$result = $connect->query($query);
 
@@ -90,14 +88,12 @@ function total_book($connect)
 	return $total;
 }
 //count total author
+//WHERE author_status = 'Enable'
 function total_author($connect)
 {
 	$total = 0;
 
-	$query = "
-	SELECT COUNT(author_id) AS Total FROM lms_author 
-	WHERE author_status = 'Enable'
-	";
+	$query = "SELECT COUNT(authorId) AS Total FROM authors ";
 
 	$result  = $connect->query($query);
 
@@ -113,9 +109,7 @@ function total_category($connect)
 {
 	$total = 0;
 
-	$query = "
-	SELECT COUNT(category_id) AS Total FROM lms_category 
-	WHERE category_status = 'Enable'
+	$query = "SELECT COUNT(categoryId) AS Total FROM category 
 	";
 
 	$result = $connect->query($query);
