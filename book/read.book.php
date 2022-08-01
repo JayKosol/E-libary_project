@@ -345,7 +345,8 @@
                                              <td><?php echo $book['releaseYear']; ?></td>
                                              <td><?php echo $book['bookEdition']; ?></td>
                                              <td>
-                                                 <img style="width: 55px;height:70px;" src="<?php echo $book['photos']; ?>" />
+                                                 <img style="width: 55px;height:70px;" src="<?php echo $book['photos']; ?>"/>
+                                                 
                                              </td>
                                              <td><?php echo $book['createDate']; ?></td>
                                              <td><?php echo $book['createBy']; ?></td>
