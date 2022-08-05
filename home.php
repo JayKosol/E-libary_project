@@ -259,7 +259,7 @@
                                           <th scope="col">Category</th>
                                           <th scope="col">Authors</th>
                                           <th scope="col">Language</th>
-                                          <th scope="col">Image</th>
+                                          <!-- <th scope="col">Image</th> -->
                                           <?php
                                                 $sql="SELECT b.*,a.authorName,c.categoryName FROM books b INNER JOIN authors a ON b.authorsId=a.authorId INNER JOIN category c ON b.categoryId=c.categoryId  
                                                 WHERE LOWER(bookTitle) LIKE LOWER('%$s%') ORDER BY bookId $sortBy LIMIT $limit OFFSET $offset";
@@ -280,10 +280,10 @@
                                     <td><?= $book['categoryName']  ?></td>
                                     <td><?= $book['authorName']  ?></td>
                                     <td><?= $book['languages']  ?></td>
-                                    <td>
-                                          <img style="width: 55px;height:55px;" src="<?php echo $book['photos']; ?>"/>
+                                    <!-- <td>
+                                          <img style="width: 55px;height:55px;" src="/img/"/>
                                           
-                                    </td>
+                                    </td> -->
                                     <?php 
                                              endwhile;
                                         }

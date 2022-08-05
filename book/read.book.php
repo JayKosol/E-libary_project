@@ -269,7 +269,7 @@
                          </div>
                          <div class="col-md-2">
                               
-                              <div class="input-group" style="width: 155px;float:right;">
+                              <div class="input-group" style="width: 170px;float:right;">
                                    <label for="sortBy" class="input-group-text">Sort By</label>
                                    <select class="form-select" id="page_sort">
                                         <option style="display: none;" ><?php echo $sort === ""?"New": $sort; ?></option>

@@ -35,7 +35,7 @@
           $cd=$_POST['createdate'];
           $desc=$_POST['description'];
 
-          $sqlUp="UPDATE user_account SET userTypes=:utype, username=:uname, `password`=:pw, position=:position, createDate=:cd, `description`=:desc WHERE userId=:id";
+          $sqlUp="UPDATE user_account SET userTypes=:utype, username=:uname, `password`=:pw, position=:position, createDate=:cd, `description`=:desc WHERE id=:id";
           $stm=$conn->prepare($sqlUp);
 
           $stm->bindParam(":utype",$pa_utype);
