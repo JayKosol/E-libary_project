@@ -281,7 +281,7 @@
                                     <td><?= $book['authorName']  ?></td>
                                     <td><?= $book['languages']  ?></td>
                                     <td>
-                                          <img style="width: 55px;height:70px;" src="<?php echo $book['photos']; ?>"/>
+                                          <img style="width: 55px;height:55px;" src="<?php echo $book['photos']; ?>"/>
                                           
                                     </td>
                                     <?php 
