@@ -12,8 +12,8 @@
                     $re=$stm->fetch();
                     $btitle=$re['bookTitle'];
                     $isbn=$re['isbn'];
-                    $author=$re['authorName'];
-                    $category=$re['categoryName'];
+                    $author=$re['authorsId'];
+                    $category=$re['categoryId'];
                     $language=$re['languages'];
                     $year=$re['releaseYear'];
                     $edition=$re['bookEdition']; 
@@ -68,8 +68,8 @@
            
           if (move_uploaded_file($_FILES['photo']['tmp_name'], $dest)) {
                $photo=$dest;
-               if ($stmt->execute()) {
-                    header("Location:./read.cate.php?alert=One record has been update!");
+               if ($stm->execute()) {
+                    header("Location:./read.book.php?alert=One record has been update!");
                     exit;
                }
           }
@@ -178,7 +178,7 @@
             </nav> 
 
 <div class="container-fluid mt-4">
-     <form action="" method="post">
+     <form action="" method="post" enctype="multipart/form-data">
           <div class="row">
                <div class="col">
                     <div class="input-group mb-2">
@@ -263,7 +263,7 @@
           
           
           <div class="mb-4">
-               <button onclick="return confirm('Do you want to update this record!')" type="submit" class="btn btn-primary">Create Now</button>
+               <button onclick="return confirm('Do you want to update this record!')" type="submit" class="btn btn-primary">Update Now</button>
                <a href="./read.book.php" style="float:right;" class="btn btn-info" >Back</a>
           </div>
      </form>
