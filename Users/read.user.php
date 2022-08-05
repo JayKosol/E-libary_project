@@ -1,8 +1,4 @@
 
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +7,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <?php include_once "../Asset/boostrap.php";
            include_once "../Asset/dbconnection.php";
+          //  include_once './Users/read.user.php';
            include_once "../Asset/font.php";
            include_once "../Users/function.php";
      ?>
@@ -277,7 +274,7 @@
                                    <th>ID</th>
                                    <th>User Type</th>
                                    <th>Username</th>
-                                   <th style="width:100px ;">Password</th>
+                                   <!-- <th style="width:100px ;">Password</th> -->
                                    <th>Position</th>
                                    <th>Create Date</th>
                                    <th>Description</th>
@@ -302,7 +299,7 @@
                                    <td><?= $u['id']; ?></td>
                                    <td><?= $u['userTypes']; ?></td>
                                    <td><?= $u['username']; ?></td>
-                                   <td ><?= $u['password']; ?></td>
+                                   <!-- <td ><?php //$u['password']; ?></td> -->
                                    <td><?= $u['position']; ?></td>
                                    <td><?= $u['createDate']; ?></td>
                                    <td><?= $u['description']; ?></td>

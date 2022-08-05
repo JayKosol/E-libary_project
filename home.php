@@ -1,4 +1,6 @@
-
+<?php 
+      include_once './alloweAccess.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
