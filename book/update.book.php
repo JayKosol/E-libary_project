@@ -68,7 +68,7 @@
            
           if (move_uploaded_file($_FILES['photo']['tmp_name'], $dest)) {
                $photo=$dest;
-               if ($stmt->execute()) {
+               if ($stm->execute()) {
                     header("Location:./read.cate.php?alert=One record has been update!");
                     exit;
                }
@@ -178,7 +178,7 @@
             </nav> 
 
 <div class="container-fluid mt-4">
-     <form action="" method="post">
+     <form action="" method="post" enctype="multipart/form-data">
           <div class="row">
                <div class="col">
                     <div class="input-group mb-2">
