@@ -74,6 +74,8 @@
                   </li>
             </ul>
 
+            <?php include_once "./profile.php" ?>
+
             
      </div>
      

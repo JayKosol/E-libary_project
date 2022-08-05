@@ -150,23 +150,7 @@
                   </li>
             </ul>
 
-            <!-- @profile -->
-            <!-- <div class="profile-content">
-                  <div class="profile">
-                        <img src="../img/default.png" alt="">
-                        <div class="profile-detail">
-                              <div class="name_job">
-                                    <div class="name">Username</div>
-                                    <div class="job">
-                                          <span>Administrator</span>
-                                          <i class='bx bx-log-out' id="btn_logout"></i>
-                                    </div>
-                                         
-                              </div>
-                              
-                        </div>
-                  </div>
-            </div> -->
+            <?php include_once "../profile.php"; ?>
      </div>
      
 
