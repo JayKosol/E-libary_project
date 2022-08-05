@@ -69,7 +69,11 @@
           if (move_uploaded_file($_FILES['photo']['tmp_name'], $dest)) {
                $photo=$dest;
                if ($stm->execute()) {
+<<<<<<< HEAD
+                    header("Location:./read.cate.php?alert=One record has been update!");
+=======
                     header("Location:./read.book.php?alert=One record has been update!");
+>>>>>>> 773c10db0a58fd3c9c59b2d0686a752f94144d9d
                     exit;
                }
           }
@@ -150,23 +154,7 @@
                   </li>
             </ul>
 
-            <!-- @profile -->
-            <!-- <div class="profile-content">
-                  <div class="profile">
-                        <img src="../img/default.png" alt="">
-                        <div class="profile-detail">
-                              <div class="name_job">
-                                    <div class="name">Username</div>
-                                    <div class="job">
-                                          <span>Administrator</span>
-                                          <i class='bx bx-log-out' id="btn_logout"></i>
-                                    </div>
-                                         
-                              </div>
-                              
-                        </div>
-                  </div>
-            </div> -->
+            <?php include_once "../profile.php"; ?>
      </div>
      
 
