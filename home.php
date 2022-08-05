@@ -253,7 +253,7 @@
                               
                          </div>
                     </div>
-                        <table class="table table-bordered bg-light shadow">
+                        <table class="table table-bordered bg-light shadow mt-3">
 
                                     <tr class="table-dark">
                                           <th scope="col">ID</th>
