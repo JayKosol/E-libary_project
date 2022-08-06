@@ -69,10 +69,7 @@
           if (move_uploaded_file($_FILES['photo']['tmp_name'], $dest)) {
                $photo=$dest;
                if ($stm->execute()) {
-<<<<<<< HEAD
-                    
-=======
->>>>>>> 861270c28428bfdf4719375afe98be23075e5cc5
+
                     header("Location:./read.book.php?alert=One record has been update!");
                     exit;
                }
