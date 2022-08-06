@@ -1,5 +1,5 @@
 <?php
-     session_start();
+
      include_once './Asset/dbconnection.php';
 
      if(!isset($_COOKIE['logincookie']) && !$_SESSION['username']){

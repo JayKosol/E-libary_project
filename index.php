@@ -59,8 +59,8 @@
                 //   var_dump(password_verify("123",$row['password']));
                     if(password_verify($pw,$row['password'])){
                         if(isset($_POST['remember'])){
-                            $remember=compact('username','password');
-                            setcookie   ('logincookie',serialize($remember),time()+(30*24*3600));
+                            $remember=compact('uname','pw');
+                            setcookie('logincookie',serialize($remember),time()+(30*24*3600));
 
                         }
                         $_SESSION['username']=$uname;
