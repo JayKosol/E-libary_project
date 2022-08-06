@@ -16,7 +16,7 @@
               
               $uType=$result['userTypes'];
               $uname=$result['username'];
-              $pw=$result['password'];
+              //$pw=$result['password'];
               $position=$result['position'];
               $cd=$result['createDate'];
               $desc=$result['description'];
@@ -30,17 +30,17 @@
           $id=$_POST['id'];
           $uType=$_POST['usertype'];
           $uname=$_POST['username'];
-          $pw=password_hash($_POST['password'],PASSWORD_DEFAULT);
+          //$pw=password_hash($_POST['password'],PASSWORD_DEFAULT);
           $position=$_POST['position'];
           $cd=$_POST['createdate'];
           $desc=$_POST['description'];
 
-          $sqlUp="UPDATE user_account SET userTypes=:utype, username=:uname, `password`=:pw, position=:position, createDate=:cd, `description`=:desc WHERE id=:id";
+          $sqlUp="UPDATE user_account SET userTypes=:utype, username=:uname, position=:position, createDate=:cd, `description`=:desc WHERE id=:id";
           $stm=$conn->prepare($sqlUp);
 
           $stm->bindParam(":utype",$pa_utype);
           $stm->bindParam(":uname",$pa_name);
-          $stm->bindParam(":pw",$pa_pw);
+          //$stm->bindParam(":pw",$pa_pw);
           $stm->bindParam(":position",$pa_pos);
           $stm->bindParam(":cd",$pa_cd);
           $stm->bindParam(":desc",$pa_desc);
@@ -48,7 +48,7 @@
 
           $pa_utype=$uType;
           $pa_name=$uname;
-          $pa_pw=$pw;
+          //$pa_pw=$pw;
           $pa_pos=$position;
           $pa_cd=$cd;
           $pa_desc=$desc;
@@ -163,10 +163,10 @@
                                    <label for="username" class="form-label">Username</label>
                                    <input type="text" value="<?php echo $uname; ?>" name="username" id="username" class="form-control" placeholder="Username">
                               </div>
-                              <div class="mb-2">
+                              <!-- <div class="mb-2">
                                    <label for="password" class="form-label">Password</label>
-                                   <input type="password" value="<?php echo $pw; ?>" name="password" id="password" class="form-control" placeholder="Password">
-                              </div>
+                                   <input type="password" value="" name="password" id="password" class="form-control" placeholder="Password">
+                              </div> -->
                               <div class="mb-2">
                                    <label for="position" class="form-label">Position</label>
                                    <input type="text" value="<?php echo $position; ?>" name="position" id="position" class="form-control" placeholder="Position">
