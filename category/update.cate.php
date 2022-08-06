@@ -63,6 +63,59 @@
            include_once "../Asset/font.php";
            include_once "../Users/function.php";
      ?>
+     <?php 
+     require_once './../Asset/dbconnection.php';
+     if(isset($_GET['id']) && !empty($_GET['id'])){
+          $id=$_GET['id'];
+          $sql="SELECT * FROM category WHERE categoryId=:id";
+          $presql=$conn->prepare($sql);
+          
+          $presql->bindParam(":id",$pa_id);
+          $pa_id=$id;
+          $presql->execute();
+          if($presql->rowCount()==1){
+              $result=$presql->fetch(PDO::FETCH_ASSOC);
+              
+              $catename=$result['categoryName'];
+              //$lname=$result['lastName'];
+              $createD=$result['createDate'];
+              $createB=$result['createBy'];
+              $desc=$result['description'];
+          }else{
+              echo "not found!";
+          }
+
+     }
+     if(isset($_POST['id']) && !empty($_POST['id'])){
+          $id=$_POST['id'];
+          $cateName=$_POST['cateName'];
+          $createD=$_POST['createDate'];
+          $createB=$_POST['createBy'];
+          $desc=$_POST['desc'];
+
+          $stm="UPDATE category SET categoryName=:catename, createDate=:cd,createBy=:cb,`description`=:desc Where categoryId=:id";
+          $stmt=$conn->prepare($stm);
+
+          $stmt->bindParam(":catename",$p_name);
+          $stmt->bindParam(":cd",$p_cd);
+          $stmt->bindParam(":cb",$p_cb);
+          $stmt->bindParam(":desc",$p_desc);
+          $stmt->bindParam(":id",$p_id);
+          $p_id=$id;
+          $p_cd=$createD;
+          $p_cb=$createB;
+          $p_desc=$desc;
+          $p_name=$cateName;
+          if($stmt->execute()){
+               header("Location: ./read.cate.php?alert=One record has been update!");
+               exit;
+          }else{
+               header("Location: ./read.cate.php?alert=This record cannot update!");
+               exit;
+          }
+
+     }
+?>
      <link rel="stylesheet" href="../Asset/css/style.css">
      <title>Update Category</title>
 </head>

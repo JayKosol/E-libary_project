@@ -147,7 +147,6 @@
                   <a class="navbar-brand" href="#">Update Author</a>
             </div>
       </nav> 
-     
 
 <div class="container-fluid">
 <form action="" method="post" class="mt-2">
