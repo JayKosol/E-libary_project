@@ -1,7 +1,7 @@
 <?php 
      define("DNS","mysql:host=localhost;dbname=elibraryms;port=3306;");
      define("USERNAME",'root');
-     define("PASSWORD",'');
+     define("PASSWORD",'12345');
 
      $options=[
           PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC,

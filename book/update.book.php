@@ -10,6 +10,7 @@
           if($stm->execute()){
                if($stm->rowCount()==1){
                     $re=$stm->fetch();
+
                     $btitle=$re['bookTitle'];
                     $isbn=$re['isbn'];
                     $author=$re['authorsId'];
@@ -18,7 +19,7 @@
                     $year=$re['releaseYear'];
                     $edition=$re['bookEdition']; 
                     $photo =$re['photos'];
-               
+                    
                     $desc=$re['desc'];
                     $create_date=$re['createDate'];
                     $create_by=$re['createBy'];
@@ -64,16 +65,29 @@
            $stm->bindParam("cBy",$create_by);
            $stm->bindParam("id",$id);
            
-           $dest = "../img/".basename($_FILES['photo']['name']);
-           
-          if (move_uploaded_file($_FILES['photo']['tmp_name'], $dest)) {
-               $photo=$dest;
-               if ($stm->execute()) {
-
-                    header("Location:./read.book.php?alert=One record has been update!");
-                    exit;
+           if(!empty($_FILES['photo']['name'])){
+               $dest = "../img/".basename($_FILES['photo']['name']);
+               if (move_uploaded_file($_FILES['photo']['tmp_name'], $dest)) {
+                    $photo=$dest;
+                    if ($stm->execute()) {
+     
+                         header("Location:./read.book.php?alert=One record has been update!");
+                         exit;
+                    }
                }
-          }
+           }else{
+               $dest=$_POST['img'];
+                    $photo=$dest;
+                    if ($stm->execute()) {
+     
+                         header("Location:./read.book.php?alert=One record has been update!");
+                         exit;
+                    }
+               
+           }
+           
+           
+          
      }
 ?>
 <!DOCTYPE html>
@@ -105,7 +119,7 @@
                               <i class='i bx bx-search'></i>
                               <input type="text" id="search" placeholder="Search">
                         </a>
-                        <!-- <i class='tool' ></i> -->
+                        <i class='tool' ></i> -->
                   </li> 
                   <li class="tab is-active">
                         <a href="../home.php" data-switcher data-tab="1">
@@ -152,7 +166,7 @@
             </ul>
 
             <?php include_once "../profile.php"; ?>
-     </div>
+     </div> 
      
 
      <div id="home_content" class="pages">
@@ -222,7 +236,9 @@
           </div>
           <div class="input-group mb-2">
                <label for="photo" class="input-group-text">Book Image</label>
-               <input type="file" value="<?= $photo ?>" name="photo" id="photo" class="form-control" placeholder="Upload image ...">
+               <input type="file" value="<?php echo $photo ?>" name="photo" id="photo" class="form-control" placeholder="Upload image ...">
+               <input type="hidden" value="<?php echo $photo ?>" name="img" >
+               <!-- <img src="<?php //echo $photo ?>" alt=""> -->
           </div>
           <div class="input-group mb-2">
                <label for="desc" class="input-group-text">Description</label>
